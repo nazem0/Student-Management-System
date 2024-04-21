@@ -30,7 +30,7 @@ export class LoginComponent {
   onSubmit() {
     this.loginForm.markAllAsTouched();
     if (this.loginForm.invalid) {
-      this.snackbar.open("Please check your registration data", "close")
+      this.snackbar.open("Please check your login data", "close")
     }
     else {
       this.authService.login(this.loginForm.value).subscribe({
