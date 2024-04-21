@@ -6,5 +6,12 @@ import { Component } from '@angular/core';
   styleUrl: './navbar.component.css'
 })
 export class NavbarComponent {
-  isNavbarCollapsed=false;
+  isNavbarCollapsed = false;
+  navLinks: { routeLink: string, label: string }[] = []
+  constructor(){
+    this.navLinks = [
+      {label:"Login", routeLink:"/auth/login"},
+      {label:"Register", routeLink:"/auth/register"},
+    ]
+  }
 }
