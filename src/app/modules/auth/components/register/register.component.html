@@ -1,5 +1,7 @@
-<form [formGroup]="registerForm" (ngSubmit)="onSubmit()"
-class="d-flex flex-column gap-3">
+<div class="my-3">
+  <h2 class="text-center">Register</h2>
+</div>
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
   <div class="form-floating mb-3">
     <input
       type="text"
@@ -39,5 +41,5 @@ class="d-flex flex-column gap-3">
     <small class="text-danger">Password is required</small>
     }
   </div>
-  <button type="submit" class="btn btn-primary">Register</button>
+  <button type="submit" class="btn btn-primary w-100 py-3">Register</button>
 </form>
