@@ -1,5 +1,6 @@
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Component } from '@angular/core';
+import { AppHelper } from '../../../helpers/app-helper';
 
 @Component({
   selector: 'app-register',
@@ -7,7 +8,7 @@ import { Component } from '@angular/core';
   styleUrl: './register.component.css'
 })
 export class RegisterComponent {
-
+appHelper=AppHelper;
 registerForm!: FormGroup;
 constructor(
   private formBuilder:FormBuilder
