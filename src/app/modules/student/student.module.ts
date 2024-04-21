@@ -4,6 +4,7 @@ import { StudentRoutes } from './student.routing';
 import { StudentsListComponent } from './components/students-list/students-list.component';
 import { StudentService } from './services/student.service';
 import { SharedModule } from '../shared/shared.module';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -14,7 +15,8 @@ import { SharedModule } from '../shared/shared.module';
   imports: [
     CommonModule,
     SharedModule,
-    StudentRoutes
+    StudentRoutes,
+    FormsModule
   ],
   providers:[
     StudentService
