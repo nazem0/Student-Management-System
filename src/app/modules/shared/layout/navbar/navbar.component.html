@@ -23,25 +23,9 @@
           routerLinkActive="active"
           >Home <span class="sr-only">(current)</span></a
         >
-        <a
-          class="nav-item nav-link"
-          routerLink="/features"
-          routerLinkActive="active"
-          >Features</a
-        >
-        <a
-          class="nav-item nav-link"
-          routerLink="/pricing"
-          routerLinkActive="active"
-          >Pricing</a
-        >
-        <a
-          class="nav-item nav-link disabled"
-          href="#"
-          tabindex="-1"
-          aria-disabled="true"
-          >Disabled</a
-        >
+       @for (link of navLinks; track $index) {
+        <a class="nav-item nav-link" [routerLink]="link.routeLink" routerLinkActive="active text-primary">{{link.label}}</a>
+       }
       </div>
     </div>
   </div>
