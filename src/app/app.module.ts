@@ -6,6 +6,10 @@ import { AppComponent } from './app.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SharedModule } from './modules/shared/shared.module';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { Http } from './interceptors/http.interceptor';
+import { AuthHelper } from './helpers/auth-helper';
 
 @NgModule({
   declarations: [
@@ -18,7 +22,15 @@ import { SharedModule } from './modules/shared/shared.module';
     NgbModule,
     SharedModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    provideAnimationsAsync(),
+    AuthHelper,
+    {
+      provide:HTTP_INTERCEPTORS,
+      useClass:Http,
+      multi:true
+    }
+  ],
+  bootstrap: [AppComponent],
 })
 export class AppModule { }
