@@ -17,12 +17,12 @@
       class="navbar-collapse flex-grow-0"
     >
       <div class="navbar-nav">
-        <a
+        <!-- <a
           class="nav-item nav-link active"
           routerLink="/"
           routerLinkActive="active"
           >Home <span class="sr-only">(current)</span></a
-        >
+        > -->
        @for (link of navLinks; track $index) {
         <a class="nav-item nav-link" [routerLink]="link.routeLink" routerLinkActive="active text-primary">{{link.label}}</a>
        }
