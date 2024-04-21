@@ -1,0 +1,28 @@
+<div class="my-3">
+    <h2 class="text-center">Students List Table</h2>
+</div>
+<div class="overflow-x-auto">
+    <table class="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Mobile</th>
+            <th>Email</th>
+            <th>NationalID</th>
+            <th>Age</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let student of students">
+            <td>{{ student.ID }}</td>
+            <td>{{ student.Name }}</td>
+            <td>{{ student.Mobile }}</td>
+            <td>{{ student.Email }}</td>
+            <td>{{ student.NationalID }}</td>
+            <td>{{ student.Age }}</td>
+          </tr>
+        </tbody>
+      </table>
+      
+</div>

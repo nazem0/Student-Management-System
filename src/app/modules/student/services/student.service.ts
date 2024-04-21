@@ -15,7 +15,7 @@ export class StudentService {
 constructor(private http:HttpClient) { }
 
 getStudentsList():Observable<ApiResponse<StudentInList[]>>{
-  return this.http.get<ApiResponse<StudentInList[]>>(`${environment}/${this.endpointParent}/Get`)
+  return this.http.get<ApiResponse<StudentInList[]>>(`${environment.api}/${this.endpointParent}/Get`)
 }
 
 }
