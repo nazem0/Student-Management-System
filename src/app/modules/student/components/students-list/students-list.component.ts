@@ -1,6 +1,7 @@
 import { StudentService } from './../../services/student.service';
 import { Component, OnInit } from '@angular/core';
 import { StudentInList } from '../../models/student-in-list';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-students-list',
@@ -10,7 +11,8 @@ import { StudentInList } from '../../models/student-in-list';
 export class StudentsListComponent implements OnInit {
   students: StudentInList[] = []
   constructor(
-    private StudentService: StudentService
+    private StudentService: StudentService,
+    private snackbar: MatSnackBar
   ) { }
   ngOnInit(): void {
     this.getStudentsList();
@@ -20,7 +22,12 @@ export class StudentsListComponent implements OnInit {
       .getStudentsList()
       .subscribe({
         next: next => {
-          this.students = next.Data
+          if (!next.Data) {
+            this.snackbar.open("No students received", "close")
+          }
+          else {
+            this.students = next.Data
+          }
         }
       })
   }
