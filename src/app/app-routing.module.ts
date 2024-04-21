@@ -4,7 +4,9 @@ import { LayoutComponent } from './modules/shared/layout/layout.component';
 
 const routes: Routes = [
   {
-    path:"", component: LayoutComponent
+    path: 'student',
+    loadChildren: () =>
+      import('./modules/student/student.module').then((m) => m.StudentModule)
   }
 ];
 
