@@ -18,7 +18,7 @@ export class NavbarComponent {
   ){
     
     this.navLinks = [
-      {label:this.transalte.instant("Students_List"), routeLink:"/student/list"},
+      {label:this.transalte.instant("Students_list"), routeLink:"/student/list"},
     ]
   }
 
