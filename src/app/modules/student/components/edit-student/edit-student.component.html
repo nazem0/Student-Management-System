@@ -1,5 +1,5 @@
 <div class="my-3">
-    <h2 class="text-center">Edit Student</h2>
+    <h2 class="text-center">{{"Edit_student_info"|translate}}</h2>
 </div>
 <form *ngIf="studentForm" [formGroup]="studentForm">
         
@@ -10,11 +10,11 @@
         class="form-control"
         id="FirstName"
         formControlName="FirstName"
-        placeholder="First Name"
+        [placeholder]="'First_name'|translate"
       />
-      <label for="FirstName">First Name</label>
+      <label for="FirstName">{{'First_name'|translate}}</label>
       @if(appHelper.checkTouchedOrDirtyAndRequiredError(studentForm.get('FirstName'))){
-      <small class="text-danger">First Name is required</small>
+      <small class="text-danger">{{"First_name_is_required"|translate}}</small>
       }
     </div>
 
@@ -24,11 +24,11 @@
         class="form-control"
         id="LastName"
         formControlName="LastName"
-        placeholder="Last Name"
+        [placeholder]="'Last_name'|translate"
       />
-      <label for="LastName">Last Name</label>
+      <label for="LastName">{{'Last_name'|translate}}</label>
       @if(appHelper.checkTouchedOrDirtyAndRequiredError(studentForm.get('LastName'))){
-      <small class="text-danger">Last Name is required</small>
+      <small class="text-danger">{{'Last_name_is_required'|translate}}</small>
       }
     </div>
   </div>
@@ -38,12 +38,12 @@
       class="form-control"
       id="NameArabic"
       formControlName="NameArabic"
-      placeholder="Name in Arabic"
+      [placeholder]="'Name_in_arabic'|translate"
       dir="rtl"
     />
-    <label for="NameArabic">Name in Arabic</label>
+    <label for="NameArabic">{{'Name_in_arabic'|translate}}</label>
     @if(appHelper.checkTouchedOrDirtyAndRequiredError(studentForm.get('NameArabic'))){
-    <small class="text-danger">Name in Arabic is required</small>
+    <small class="text-danger">{{"Name_in_arabic_is_required"|translate}}</small>
     }
   </div>
 
@@ -53,11 +53,11 @@
       class="form-control"
       id="NameEnglish"
       formControlName="NameEnglish"
-      placeholder="Name in English"
+      [placeholder]="'Name_in_english'|translate"
     />
-    <label for="NameEnglish">Name in English</label>
+    <label for="NameEnglish">{{'Name_in_english'|translate}}</label>
     @if(appHelper.checkTouchedOrDirtyAndRequiredError(studentForm.get('NameEnglish'))){
-    <small class="text-danger">Name in English is required</small>
+    <small class="text-danger">{{"Name_in_english_is_required"|translate}}</small>
     }
   </div>
   <div class="mb-3">
@@ -81,13 +81,13 @@
       class="form-control"
       id="Email"
       formControlName="Email"
-      placeholder="Email"
+      [placeholder]="'Email'|translate"
     />
-    <label for="Email">Email</label>
+    <label for="Email">{{'Email'|translate}}</label>
     <div class="d-flex flex-column">
      @if(studentForm.get('Email')?.dirty &&
       studentForm.get('Email')?.invalid){
-      <small class="text-danger">Email is invalid</small>
+      <small class="text-danger">{{'Email_is_invalid'|translate}}</small>
       }
     </div>
   </div>
@@ -97,9 +97,9 @@
       class="form-control"
       id="NationalID"
       formControlName="NationalID"
-      placeholder="National ID"
+      [placeholder]="'National_ID'|translate"
     />
-    <label for="NationalID">National ID</label>
+    <label for="NationalID">{{'National_ID'|translate}}</label>
   </div>
 
   <div class="form-floating mb-3">
@@ -108,12 +108,12 @@
       class="form-control"
       id="Age"
       formControlName="Age"
-      placeholder="Age"
+      [placeholder]="'Age'|translate"
     />
-    <label for="Age">Age</label>
+    <label for="Age">{{"Age"|translate}}</label>
   </div>
 
   <button (click)="editStudent()" type="submit" class="btn btn-primary py-3 w-100">
-    Submit
+    {{"Edit"|translate}}
   </button>
 </form>

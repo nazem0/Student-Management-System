@@ -1,3 +1,4 @@
+import { TranslateService } from '@ngx-translate/core';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -28,7 +29,8 @@ export class EditStudentComponent implements OnInit {
     private formBuilder: FormBuilder,
     private studentService: StudentService,
     private snackbar: MatSnackBar,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private translate:TranslateService
   ) {}
   ngOnInit(): void {
     this.initStudentId();
@@ -41,14 +43,11 @@ export class EditStudentComponent implements OnInit {
         next: next => {
           let idParam = next.get("id");
           if (idParam) {
-            let id = parseInt(idParam);
-            if (isFinite(id)) {
-              console.log(id);
-
-              this.getStudentData(id);
+            if (AppHelper.onlyDigitsPattern.test(idParam)) {
+              this.getStudentData(parseInt(idParam));
             }
             else {
-              this.snackbar.open("Invalid student id", "close")
+              this.snackbar.open(this.translate.instant("Invalid_id"))
             }
           }
         }
@@ -61,7 +60,7 @@ export class EditStudentComponent implements OnInit {
       .subscribe({
         next: next => {
           if (!next.Data) {
-            this.snackbar.open("No student data received", "close")
+            this.snackbar.open(this.translate.instant("No_student_data_received"))
           }
           else {
             this.initForm(next.Data);
@@ -80,7 +79,7 @@ export class EditStudentComponent implements OnInit {
       NameEnglish: new FormControl<string>(student.NameEnglish, [Validators.required]),
       FirstName: new FormControl<string>(student.FirstName, [Validators.required]),
       LastName: new FormControl<string>(student.LastName, [Validators.required]),
-      Email: new FormControl<string | null>(student.Email),
+      Email: new FormControl<string | null>(student.Email,[Validators.email]),
       Mobile: new FormControl<string | null>(student.Mobile),
       NationalID: new FormControl<string | null>(student.NationalID),
       Age: new FormControl<number>(student.Age)
@@ -98,7 +97,7 @@ export class EditStudentComponent implements OnInit {
     // and in the case it was called it can't be null
     this.studentForm!.markAllAsTouched();
     if (this.studentForm!.invalid) {
-      this.snackbar.open("Please check student data", "close")
+      this.snackbar.open(this.translate.instant("Please_check_student_data"))
     }
     else {
       this.studentService
