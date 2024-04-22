@@ -1,19 +1,19 @@
 <div class="modal-header">
-    <h2 class="modal-title">Confirm Student Delete</h2>
-    <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
+    <h2 class="modal-title">{{"Confirm_student_delete"|translate}}</h2>
+    <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss()"></button>
 </div>
 <div class="modal-body">
     <div>
-        <p>Are you sure you want to remove this student?</p>
+        <p>{{"Are_you_sure_you_want_to_remove_this_student"|translate}}</p>
     </div>
 </div>
 <div class="modal-footer">
     <div class="d-flex gap-2">
         <button (click)="activeModal.close(true)" class="btn btn-primary">
-            Yes
+            {{"Yes"|translate}}
         </button>
         <button (click)="activeModal.dismiss()" class="btn btn-secondary">
-            No
+            {{"No"|translate}}
         </button>
     </div>
 </div>

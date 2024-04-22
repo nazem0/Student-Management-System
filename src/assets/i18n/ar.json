@@ -42,5 +42,10 @@
   "Name_in_english_is_required": "الاسم بالإنجليزية مطلوب",
   "Invalid_id":"رقم تعريفي غير صالح",
   "No_student_data_received":"لم يتم إستلام بيانات طالب",
-  "Please_check_student_data":"من فضلك تأكد من بيانات الطالب"
+  "Please_check_student_data":"من فضلك تأكد من بيانات الطالب",
+  "Confirm_student_delete":"تأكيد حذف الطالب",
+  "Are_you_sure_you_want_to_remove_this_student":"هل انت متأكد انك تريد حذف هذا الطالب ؟",
+  "Yes":"نعم",
+  "No":"لا",
+  "No_students_data_received":"لم يتم إستلام بيانات الطلاب"
 }

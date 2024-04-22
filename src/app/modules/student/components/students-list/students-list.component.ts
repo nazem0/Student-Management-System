@@ -5,6 +5,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { DeleteStudentConfirmationComponent } from './delete-student-confirmation/delete-student-confirmation.component';
 import { CreateStudentComponent } from '../create-student/create-student.component';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-students-list',
@@ -24,7 +25,8 @@ export class StudentsListComponent implements OnInit {
   constructor(
     private StudentService: StudentService,
     private snackbar: MatSnackBar,
-    private modalService : NgbModal
+    private modalService : NgbModal,
+    private translate:TranslateService
   ) {
     this.filters = {
       Name: "",
@@ -42,7 +44,7 @@ export class StudentsListComponent implements OnInit {
       .subscribe({
         next: next => {
           if (!next.Data) {
-            this.snackbar.open("No students received", "close")
+            this.snackbar.open(this.translate.instant("No_students_data_received"))
           }
           else {
             this.students = next.Data
