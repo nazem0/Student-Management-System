@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Component } from '@angular/core';
 import { AppHelper } from '../../../../helpers/app-helper';
 import { MatSnackBar } from '@angular/material/snack-bar'
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -14,7 +15,8 @@ export class RegisterComponent {
   constructor(
     private formBuilder: FormBuilder,
     private snackbar: MatSnackBar,
-    private authService: AuthService
+    private authService: AuthService,
+    private router:Router
   ) {
     this.createForm();
   }
@@ -32,7 +34,9 @@ export class RegisterComponent {
       this.snackbar.open("Please check your registration data", "close")
     }
     else {
-      this.authService.register(this.registerForm.value).subscribe()
+      this.authService.register(this.registerForm.value).subscribe({
+        next:()=>this.router.navigate(['/auth/login'])
+      })
     }
   }
 

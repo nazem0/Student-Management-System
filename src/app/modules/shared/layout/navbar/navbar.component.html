@@ -1,31 +1,26 @@
 <nav class="bg-light container-sm">
   <div class="navbar navbar-expand-lg navbar-light d-flex justify-content-between">
     <a class="navbar-brand" [routerLink]="'/'">Brand</a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      (click)="isNavbarCollapsed = !isNavbarCollapsed"
-    >
+    <button class="navbar-toggler" type="button" (click)="isNavbarCollapsed = !isNavbarCollapsed">
       <span class="navbar-toggler-icon"></span>
     </button>
     <!-- 
       flex-grow-0 to override the default behavior
       as it by default flex-grow
      -->
-    <div
-      [ngbCollapse]="isNavbarCollapsed"
-      class="navbar-collapse flex-grow-0"
-    >
+    <div [ngbCollapse]="isNavbarCollapsed" class="navbar-collapse flex-grow-0">
       <div class="navbar-nav">
-        <a
-          class="nav-item nav-link active"
-          routerLink="/"
-          routerLinkActive="active"
-          >Home <span class="sr-only">(current)</span></a
-        >
-       @for (link of navLinks; track $index) {
-        <a class="nav-item nav-link" [routerLink]="link.routeLink" routerLinkActive="active text-primary">{{link.label}}</a>
-       }
+        <a class="nav-item nav-link active" routerLink="/" routerLinkActive="active">Home <span
+            class="sr-only">(current)</span></a>
+        @if(authHelper.isLoggedIn|async){
+        <button class="btn" (click)="logout()">Logout</button>
+        }
+        @else {
+        @for (link of navLinks; track $index) {
+        <a class="nav-item nav-link" [routerLink]="link.routeLink"
+          routerLinkActive="active text-primary">{{link.label}}</a>
+        }
+        }
       </div>
     </div>
   </div>

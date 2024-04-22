@@ -4,6 +4,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthService } from '../../services/auth.service';
 import { AuthHelper } from '../../../../helpers/auth-helper';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -11,16 +12,17 @@ import { AuthHelper } from '../../../../helpers/auth-helper';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
-  appHelper=AppHelper;
-  loginForm!:FormGroup;
+  appHelper = AppHelper;
+  loginForm!: FormGroup;
   constructor(
-    private formBuilder:FormBuilder,
-    private snackbar:MatSnackBar,
-    private authService:AuthService,
-    private authHelper:AuthHelper
-    ){
-      this.createForm();
-    }
+    private formBuilder: FormBuilder,
+    private snackbar: MatSnackBar,
+    private authService: AuthService,
+    private authHelper: AuthHelper,
+    private router:Router
+  ) {
+    this.createForm();
+  }
   createForm() {
     this.loginForm = this.formBuilder.group({
       UserName: new FormControl<string>('', [Validators.required]),
@@ -34,14 +36,14 @@ export class LoginComponent {
     }
     else {
       this.authService.login(this.loginForm.value).subscribe({
-        next:next=>{
-          if(!next.Data)
-          {
-            this.snackbar.open("No token received","close")
+        next: next => {
+          if (!next.Data) {
+            this.snackbar.open("No token received", "close")
           }
-          else{
-            this.snackbar.open("Authenticated","✔")
+          else {
+            this.snackbar.open("Authenticated", "✔")
             this.authHelper.storeToken(next.Data)
+            this.router.navigate(['/home'])
           }
         }
       })
