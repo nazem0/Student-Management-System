@@ -6,6 +6,7 @@ import { LayoutComponent } from './layout/layout.component';
 import { NavbarComponent } from './layout/navbar/navbar.component';
 import { HttpClientModule } from '@angular/common/http';
 import { TranslateModule } from '@ngx-translate/core';
+import { TranslateNumberPipe } from './pipes/translate-number.pipe';
 
 
 
@@ -13,17 +14,20 @@ import { TranslateModule } from '@ngx-translate/core';
   declarations: [
     NavbarComponent,
     LayoutComponent,
+    TranslateNumberPipe
   ],
   imports: [
     CommonModule,
     RouterModule,
     NgbModule,
     HttpClientModule,
-    TranslateModule
+    TranslateModule,
   ],
   exports: [
+    NgbModule,
     HttpClientModule,
-    TranslateModule
+    TranslateModule,
+    TranslateNumberPipe
   ],
 })
 export class SharedModule { }

@@ -94,6 +94,11 @@
             <td>{{ student.Mobile }}</td>
             <td>{{ student.Email }}</td>
             <td>{{ student.NationalID }}</td>
+            <!-- <td>{{ student.Age | translateNumber }}</td> -->
+            <!-- 
+              Commented because UI didn't look that good with ID in English
+              and the age in Arabic
+             -->
             <td>{{ student.Age }}</td>
             <td>
               <button class="btn btn-warning" [routerLink]="'../edit/'+student.ID">
