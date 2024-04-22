@@ -35,6 +35,14 @@ export class StudentService {
   editStudent(student: EditStudentEndpointRequest): Observable<ApiResponse<boolean>> {
     return this.http.put<ApiResponse<boolean>>(`${environment.api}/${this.endpointParent}/PUT`, student)
   }
+
+  deleteStudent(id: number): Observable<ApiResponse<boolean>> {
+    return this.http.delete<ApiResponse<boolean>>(`${environment.api}/${this.endpointParent}/Delete`, {
+      params: {
+        id: id
+      }
+    })
+  }
   createStudent(student: CreateStudentEndpointRequest): Observable<ApiResponse<number>> {
     return this.http.post<ApiResponse<number>>(`${environment.api}/${this.endpointParent}/POST`, student)
   }

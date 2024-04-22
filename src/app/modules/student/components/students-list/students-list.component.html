@@ -84,7 +84,7 @@
             <th>Email</th>
             <th>NationalID</th>
             <th>Age</th>
-            <th colspan="1">Actions</th>
+            <th colspan="2">Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -99,6 +99,13 @@
               <button class="btn btn-warning" [routerLink]="'../edit/'+student.ID">
                 <a>
                   Edit
+                </a>
+              </button>
+            </td>
+            <td>
+              <button class="btn btn-danger" (click)="openDeleteStudentConfirmation(student.ID)">
+                <a>
+                  Delete
                 </a>
               </button>
             </td>
