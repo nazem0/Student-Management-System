@@ -14,6 +14,11 @@ export class I18nHelper {
     }
 
     applyDirection(language: Languages) {
+        if (language === Languages.Arabic)
+            document.dir = "rtl"
+        else {
+            document.dir = "ltr"
+        }
         this.loadStyle(language)
     }
 

@@ -18,3 +18,7 @@ ngx-intl-tel-input {
         width: 100% !important;
     }
 }
+
+mat-snack-bar-container{
+    text-align: center;
+}
