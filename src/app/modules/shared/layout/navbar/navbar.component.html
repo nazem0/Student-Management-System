@@ -16,7 +16,9 @@
               routerLinkActive="active text-primary">{{link.label}}</a>
             }
         @if(authHelper.isLoggedIn|async){
-        <button class="btn" (click)="logout()">Logout</button>
+        <div>
+          <button class="btn px-0" (click)="logout()">Logout</button>
+        </div>
         }
         @else {
           <a class="nav-item nav-link" [routerLink]="['/auth/login']"
