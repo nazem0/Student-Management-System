@@ -1,6 +1,7 @@
 {
   "Student-Management-System": {
     "login": {
+      "Authenticated": "Authenticated",
       "Login": "login",
       "Password": "Password",
       "Password_is_required": "Password is required",

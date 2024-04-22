@@ -6,5 +6,9 @@
   "Username": "اسم المستخدم",
   "Username_is_required": "اسم المستخدم مطلوب",
   "No_token_received":"لم يتم إستلام مفتاح الدخول",
-  "Please_check_your_login_data":"من فضلك تأكد من بيانات تسجيل الدخول"
+  "Please_check_your_login_data":"من فضلك تأكد من بيانات تسجيل الدخول",
+  "Name":"الإسم",
+  "Name_is_required":"الإسم مطلوب",
+  "Register":"التسجيل",
+  "Please_check_your_registration_data":"من فضلك تأكد من بيانات التسجيل"
 }
