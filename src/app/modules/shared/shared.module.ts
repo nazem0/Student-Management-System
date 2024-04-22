@@ -5,6 +5,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LayoutComponent } from './layout/layout.component';
 import { NavbarComponent } from './layout/navbar/navbar.component';
 import { HttpClientModule } from '@angular/common/http';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 
@@ -13,14 +14,16 @@ import { HttpClientModule } from '@angular/common/http';
     NavbarComponent,
     LayoutComponent,
   ],
-  exports: [
-    HttpClientModule
-  ],
   imports: [
     CommonModule,
     RouterModule,
     NgbModule,
-    HttpClientModule
-  ]
+    HttpClientModule,
+    TranslateModule
+  ],
+  exports: [
+    HttpClientModule,
+    TranslateModule
+  ],
 })
 export class SharedModule { }
