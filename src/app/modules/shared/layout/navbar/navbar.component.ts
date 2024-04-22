@@ -7,9 +7,10 @@ import { Component } from '@angular/core';
 })
 export class NavbarComponent {
   isNavbarCollapsed = false;
-  navLinks: { routeLink: string, label: string }[] = []
+  navLinks: { routeLink: string, label?: string }[] = []
   constructor(){
     this.navLinks = [
+      {label:"Students List", routeLink:"/student/list"},
       {label:"Login", routeLink:"/auth/login"},
       {label:"Register", routeLink:"/auth/register"},
     ]
