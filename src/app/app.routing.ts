@@ -1,4 +1,5 @@
 import { RouterModule, Routes } from '@angular/router';
+import { userGuard } from './guards/user.guard';
 
 const routes: Routes = [
   {
@@ -9,7 +10,8 @@ const routes: Routes = [
   {
     path: 'student',
     loadChildren: () =>
-      import('./modules/student/student.module').then((m) => m.StudentModule)
+      import('./modules/student/student.module').then((m) => m.StudentModule),
+      canActivate:[userGuard]
   }
 ];
 
