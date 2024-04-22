@@ -10,6 +10,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Http } from './interceptors/http.interceptor';
 import { AuthHelper } from './helpers/auth-helper';
+import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,12 @@ import { AuthHelper } from './helpers/auth-helper';
       provide:HTTP_INTERCEPTORS,
       useClass:Http,
       multi:true
+    },
+    {
+      provide:MAT_SNACK_BAR_DEFAULT_OPTIONS,
+      useValue:{
+        duration:3500
+      }
     }
   ],
   bootstrap: [AppComponent],
