@@ -1,0 +1,101 @@
+<div class="my-3">
+    <h2 class="text-center">Create Student</h2>
+</div>
+<form [formGroup]="studentForm">
+  <div class="row row-cols-md-2 gy-1 gx-0">
+    <div class="form-floating mb-3">
+      <input
+        type="text"
+        class="form-control"
+        id="FirstName"
+        formControlName="FirstName"
+        placeholder="First Name"
+      />
+      <label for="FirstName">First Name</label>
+      @if(appHelper.checkTouchedOrDirtyAndRequiredError(studentForm.get('FirstName'))){
+      <small class="text-danger">First Name is required</small>
+      }
+    </div>
+
+    <div class="form-floating mb-3">
+      <input
+        type="text"
+        class="form-control"
+        id="LastName"
+        formControlName="LastName"
+        placeholder="Last Name"
+      />
+      <label for="LastName">Last Name</label>
+      @if(appHelper.checkTouchedOrDirtyAndRequiredError(studentForm.get('LastName'))){
+      <small class="text-danger">Last Name is required</small>
+      }
+    </div>
+  </div>
+  <div class="mb-3">
+    <ngx-intl-tel-input
+      cssClass="form-control py-3"
+      [selectedCountryISO]="countryISO.Egypt"
+      [enablePlaceholder]="true"
+      [searchCountryFlag]="true"
+      [maxLength]="15"
+      [phoneValidation]="true"
+      [(ngModel)]="Mobile"
+      [ngModelOptions]="{ standalone: true }"
+      (ngModelChange)="studentForm.get('Mobile')?.setValue(Mobile?.e164Number)"
+    >
+    </ngx-intl-tel-input>
+    @if(appHelper.checkTouchedOrDirtyAndRequiredError(studentForm.get('Mobile'))){
+    <small class="text-danger">Mobile is required</small>
+    }
+  </div>
+
+  <div class="form-floating mb-3">
+    <input
+      type="text"
+      class="form-control"
+      id="Email"
+      formControlName="Email"
+      placeholder="Email"
+    />
+    <label for="Email">Email</label>
+    <div class="d-flex flex-column">
+      @if(appHelper.checkTouchedOrDirtyAndRequiredError(studentForm.get('Email'))){
+      <small class="text-danger">Email is required</small>
+      } @if(studentForm.get('Email')?.dirty &&
+      studentForm.get('Email')?.invalid){
+      <small class="text-danger">Email is invalid</small>
+      }
+    </div>
+  </div>
+  <div class="form-floating mb-3">
+    <input
+      type="text"
+      class="form-control"
+      id="NationalID"
+      formControlName="NationalID"
+      placeholder="National ID"
+    />
+    <label for="NationalID">National ID</label>
+    @if(appHelper.checkTouchedOrDirtyAndRequiredError(studentForm.get('NationalID'))){
+    <small class="text-danger">National ID is required</small>
+    }
+  </div>
+
+  <div class="form-floating mb-3">
+    <input
+      type="number"
+      class="form-control"
+      id="Age"
+      formControlName="Age"
+      placeholder="Age"
+    />
+    <label for="Age">Age</label>
+    @if(appHelper.checkTouchedOrDirtyAndRequiredError(studentForm.get('Age'))){
+    <small class="text-danger">Age is required</small>
+    }
+  </div>
+
+  <button (click)="createStudent()" type="submit" class="btn btn-primary py-3 w-100">
+    Submit
+  </button>
+</form>
