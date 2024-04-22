@@ -17,14 +17,14 @@
             }
         @if(authHelper.isLoggedIn|async){
         <div>
-          <button class="btn px-0" (click)="logout()">Logout</button>
+          <button class="btn px-0" (click)="logout()">{{"Logout"|translate}}</button>
         </div>
         }
         @else {
           <a class="nav-item nav-link" [routerLink]="['/auth/login']"
-              routerLinkActive="active text-primary">Login</a>
+              routerLinkActive="active text-primary">{{"Login"|translate}}</a>
               <a class="nav-item nav-link" [routerLink]="['/auth/register']"
-              routerLinkActive="active text-primary">Register</a>
+              routerLinkActive="active text-primary">{{"Register"|translate}}</a>
         }
         
       </div>

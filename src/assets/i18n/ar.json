@@ -10,5 +10,10 @@
   "Name":"الإسم",
   "Name_is_required":"الإسم مطلوب",
   "Register":"التسجيل",
-  "Please_check_your_registration_data":"من فضلك تأكد من بيانات التسجيل"
+  "Please_check_your_registration_data":"من فضلك تأكد من بيانات التسجيل",
+  "Students_List":"قائمة الطلاب",
+  "You_have_to_login_first_to_view_this_page":"قم بتسجيل الدخول اولاً لدخول هذه الصفحة",
+  "Logout":"تسجيل الخروج",
+  "Error":"خطأ",
+  "Unauthorized":"ليست لديك صلاحية"
 }
