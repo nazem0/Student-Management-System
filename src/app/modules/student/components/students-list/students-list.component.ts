@@ -31,4 +31,14 @@ export class StudentsListComponent implements OnInit {
         }
       })
   }
+
+  deleteStudent(studentId: number) {
+    this.StudentService
+      .deleteStudent(studentId)
+      .subscribe({
+        next: () => {
+          this.getStudentsList()
+        }
+      })
+  }
 }

@@ -34,4 +34,12 @@ getStudentById(id:number):Observable<ApiResponse<StudentDetails>>{
 editStudent(student:EditStudentEndpointRequest):Observable<ApiResponse<boolean>>{
   return this.http.put<ApiResponse<boolean>>(`${environment.api}/${this.endpointParent}/PUT`, student)
 }
+
+deleteStudent(id:number):Observable<ApiResponse<boolean>>{
+  return this.http.delete<ApiResponse<boolean>>(`${environment.api}/${this.endpointParent}/Delete`,{
+    params:{
+      id:id
+    }
+  })
+}
 }
