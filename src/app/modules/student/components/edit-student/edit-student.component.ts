@@ -16,30 +16,20 @@ export class EditStudentComponent implements OnInit {
   studentForm?: FormGroup;
   countryISO = CountryISO;
   appHelper = AppHelper;
-  Mobile: {
-    countryCode: string;
-    dialCode: string;
-    e164Number: string;
-    internationalNumber: string;
-    nationalNumber: string;
+  Mobile?: {
+    countryCode?: string;
+    dialCode?: string;
+    e164Number?: string;
+    internationalNumber?: string;
+    nationalNumber?: string;
     number: string;
-  };
+  }
   constructor(
     private formBuilder: FormBuilder,
     private studentService: StudentService,
     private snackbar: MatSnackBar,
     private route: ActivatedRoute
-  ) {
-
-    this.Mobile = {
-      countryCode: "",
-      dialCode: "",
-      e164Number: "",
-      internationalNumber: "",
-      nationalNumber: "",
-      number: ""
-    }
-  }
+  ) {}
   ngOnInit(): void {
     this.initStudentId();
   }
@@ -95,12 +85,15 @@ export class EditStudentComponent implements OnInit {
       NationalID: new FormControl<string | null>(student.NationalID),
       Age: new FormControl<number>(student.Age)
     });
+    this.setMobileNumberValue(student.Mobile);
   }
 
   setMobileNumberValue(mobile: string) {
-    this.Mobile.e164Number = mobile;
+    this.Mobile = {
+      number:mobile,
+    }
   }
-  createStudent() {
+  editStudent() {
     // enforce not null because the function is called once
     // and in the case it was called it can't be null
     this.studentForm!.markAllAsTouched();

@@ -70,7 +70,7 @@
       [phoneValidation]="true"
       [(ngModel)]="Mobile"
       [ngModelOptions]="{ standalone: true }"
-      (ngModelChange)="studentForm.get('Mobile')?.setValue(Mobile.e164Number)"
+      (ngModelChange)="studentForm.get('Mobile')?.setValue(Mobile?.e164Number)"
     >
     </ngx-intl-tel-input>
   </div>
@@ -113,7 +113,7 @@
     <label for="Age">Age</label>
   </div>
 
-  <button (click)="createStudent()" type="submit" class="btn btn-primary py-3 w-100">
+  <button (click)="editStudent()" type="submit" class="btn btn-primary py-3 w-100">
     Submit
   </button>
 </form>
