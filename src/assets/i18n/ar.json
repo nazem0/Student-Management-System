@@ -19,10 +19,20 @@
   "Create_student":"إضافة طالب",
   "Mobile":"رقم الموبايل",
   "National_ID":"الرقم القومي",
-  "Age":"السن",
+  "Age":"العمر",
   "ID":"الرقم التعريفي",
   "Email":"البريد الإلكتروني",
   "Actions":"إجراءات",
   "Edit":"تعديل",
-  "Delete":"حذف"
+  "Delete":"حذف",
+  "First_name":"الإسم الأول",
+  "First_name_is_required": "الاسم الأول مطلوب",
+  "Last_name": "اسم العائلة",
+  "Last_name_is_required": "اسم العائلة مطلوب",
+  "Mobile_is_required": "الهاتف المحمول مطلوب",
+  "Email_is_required": "البريد الإلكتروني مطلوب",
+  "Email_is_invalid": "البريد الإلكتروني غير صالح",
+  "National_ID_is_required": "الرقم القومي مطلوب",
+  "Age_is_required": "العمر مطلوب",
+  "Submit": "إرسال"
 }

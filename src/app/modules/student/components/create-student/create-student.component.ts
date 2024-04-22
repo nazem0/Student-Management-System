@@ -29,7 +29,6 @@ export class CreateStudentComponent {
     public activeModal : NgbActiveModal,
     private formBuilder: FormBuilder,
     private studentService:StudentService,
-    private snackbar:MatSnackBar,
     ) {
     this.initForm();
   }
@@ -40,15 +39,12 @@ export class CreateStudentComponent {
       Email: new FormControl<string>('', [Validators.email]),
       Mobile:new FormControl<string>('',),
       NationalID: new FormControl<string>('',),
-      Age: new FormControl<number | undefined>(undefined)
+      Age: new FormControl<number | undefined>(undefined,[Validators.required])
     });
   }
   createStudent(){
-    if(this.studentForm.invalid){
-      this.snackbar.open("Please check student data", "close")
-    }
-    else{
-      this.studentForm.markAllAsTouched();
+    this.studentForm.markAllAsTouched();
+    if(this.studentForm.valid){
       this.studentService
       .createStudent(this.studentForm.value)
       .subscribe({

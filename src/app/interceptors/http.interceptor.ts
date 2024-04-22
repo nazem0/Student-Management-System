@@ -26,10 +26,12 @@ export class Http implements HttpInterceptor {
                 console.log(event);
                 
                 if(req.method !== 'GET' || event.status !== 200) {
-                    this._snackbar.open(event.body.Message, 'close', { duration: 5000 })
+                    this._snackbar.open(event.body.Message, '', { duration: 5000 })
                 }
             }),
             catchError((error: HttpErrorResponse) => {
+                console.error("Interceptor Error",error);
+                
                 if (error.status === 401) {
                     this._snackbar.open(this._translate.instant("Unauthorized"))
                     this._authHelper.removeToken();
