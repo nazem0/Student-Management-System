@@ -6,7 +6,6 @@ import { CreateStudentComponent } from './components/create-student/create-stude
 const routes: Routes = [
   { path:"", component:LayoutComponent, children:[
     {path:"list", component:StudentsListComponent, title:"Students List"},
-    {path:"test", component:CreateStudentComponent, title:"Test"}
   ] },
 ];
 

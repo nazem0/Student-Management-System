@@ -13,13 +13,13 @@ import { CreateStudentEndpointRequest } from '../models/create-student-endpoint-
 export class StudentService {
   private readonly endpointParent = "Student"
 
-constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-getStudentsList():Observable<ApiResponse<StudentInList[]>>{
-  return this.http.get<ApiResponse<StudentInList[]>>(`${environment.api}/${this.endpointParent}/Get`)
-}
+  getStudentsList(): Observable<ApiResponse<StudentInList[]>> {
+    return this.http.get<ApiResponse<StudentInList[]>>(`${environment.api}/${this.endpointParent}/Get`)
+  }
 
-createStudent(student:CreateStudentEndpointRequest):Observable<ApiResponse<number>>{
-  return this.http.post<ApiResponse<number>>(`${environment.api}/${this.endpointParent}/POST`, student)
-}
+  createStudent(student: CreateStudentEndpointRequest): Observable<ApiResponse<number>> {
+    return this.http.post<ApiResponse<number>>(`${environment.api}/${this.endpointParent}/POST`, student)
+  }
 }
