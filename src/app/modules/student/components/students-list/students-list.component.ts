@@ -100,7 +100,7 @@ export class StudentsListComponent implements OnInit {
     Commented because not mentioned in the task,
      but I can implement it anyway 
     */
-   
+
     // this.students = 
     // this.students.filter(e => e.Email.includes(this.filters.Email))
 
@@ -108,7 +108,7 @@ export class StudentsListComponent implements OnInit {
       this.students
         .filter(e => e.NationalID.includes(this.filters.NationalID))
 
-    if (this.filters.Age) {
+    if (typeof this.filters.Age === "number") {
       this.students = this.students.filter(e => e.Age == this.filters.Age)
     }
   }
