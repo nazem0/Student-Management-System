@@ -5,6 +5,8 @@ import { StudentsListComponent } from './components/students-list/students-list.
 import { StudentService } from './services/student.service';
 import { SharedModule } from '../shared/shared.module';
 import { EditStudentComponent } from './components/edit-student/edit-student.component';
+import { NgxIntlTelInputModule } from 'ngx-intl-tel-input-gg';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -16,7 +18,10 @@ import { EditStudentComponent } from './components/edit-student/edit-student.com
   imports: [
     CommonModule,
     SharedModule,
-    StudentRoutes
+    StudentRoutes,
+    FormsModule,
+    ReactiveFormsModule,
+    NgxIntlTelInputModule
   ],
   providers:[
     StudentService
