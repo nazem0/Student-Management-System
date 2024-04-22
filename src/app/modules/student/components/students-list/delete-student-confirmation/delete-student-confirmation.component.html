@@ -1,0 +1,19 @@
+<div class="modal-header">
+    <h2 class="modal-title">Confirm Student Delete</h2>
+    <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
+</div>
+<div class="modal-body">
+    <div>
+        <p>Are you sure you want to remove this student?</p>
+    </div>
+</div>
+<div class="modal-footer">
+    <div class="d-flex gap-2">
+        <button (click)="activeModal.close(true)" class="btn btn-primary">
+            Yes
+        </button>
+        <button (click)="activeModal.dismiss()" class="btn btn-secondary">
+            No
+        </button>
+    </div>
+</div>

@@ -7,13 +7,15 @@ import { SharedModule } from '../shared/shared.module';
 import { EditStudentComponent } from './components/edit-student/edit-student.component';
 import { NgxIntlTelInputModule } from 'ngx-intl-tel-input-gg';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DeleteStudentConfirmationComponent } from './components/students-list/delete-student-confirmation/delete-student-confirmation.component';
 
 
 
 @NgModule({
   declarations: [
     StudentsListComponent,
-    EditStudentComponent
+    EditStudentComponent,
+    DeleteStudentConfirmationComponent
   ],
   imports: [
     CommonModule,
