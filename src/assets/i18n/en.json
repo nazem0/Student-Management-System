@@ -1,0 +1,11 @@
+{
+  "Student-Management-System": {
+    "login": {
+      "Login": "login",
+      "Password": "Password",
+      "Password_is_required": "Password is required",
+      "Username": "Username",
+      "Username_is_required": "Username is required"
+    }
+  }
+}

@@ -2,7 +2,9 @@ import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { BehaviorSubject } from "rxjs";
 
-@Injectable()
+@Injectable({
+    providedIn:"root"
+})
 
 export class AuthHelper {
     private _isLoggedIn = new BehaviorSubject<boolean>(this.checkHasToken());

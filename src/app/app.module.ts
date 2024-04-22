@@ -12,6 +12,7 @@ import { Http } from './interceptors/http.interceptor';
 import { AuthHelper } from './helpers/auth-helper';
 import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { I18nHelper } from './helpers/i18n-helper';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -34,7 +35,6 @@ export function HttpLoaderFactory(http: HttpClient) {
   ],
   providers: [
     provideAnimationsAsync(),
-    AuthHelper,
     {
       provide:HTTP_INTERCEPTORS,
       useClass:Http,
