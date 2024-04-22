@@ -43,7 +43,7 @@ export class LoginComponent {
           else {
             this.snackbar.open("Authenticated", "✔")
             this.authHelper.storeToken(next.Data)
-            this.router.navigate(['/home'])
+            this.router.navigate(['/'])
           }
         }
       })

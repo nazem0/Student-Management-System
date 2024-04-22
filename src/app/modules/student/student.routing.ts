@@ -6,6 +6,9 @@ import { CreateStudentComponent } from './components/create-student/create-stude
 
 const routes: Routes = [
   {
+    path:"", redirectTo: "list", pathMatch: "full"
+  },
+  {
     path: "", component: LayoutComponent, children: [
       { path: "list", component: StudentsListComponent, title: "Students List" },
       { path: "edit/:id", component: EditStudentComponent, title: "Edit Student" }

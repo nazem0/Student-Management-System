@@ -17,8 +17,6 @@ export class NavbarComponent {
     
     this.navLinks = [
       {label:"Students List", routeLink:"/student/list"},
-      {label:"Login", routeLink:"/auth/login"},
-      {label:"Register", routeLink:"/auth/register"},
     ]
   }
 

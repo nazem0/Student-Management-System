@@ -10,17 +10,21 @@
      -->
     <div [ngbCollapse]="isNavbarCollapsed" class="navbar-collapse flex-grow-0">
       <div class="navbar-nav">
-        <a class="nav-item nav-link active" routerLink="/" routerLinkActive="active">Home <span
-            class="sr-only">(current)</span></a>
+
+            @for (link of navLinks; track $index) {
+            <a class="nav-item nav-link" [routerLink]="link.routeLink"
+              routerLinkActive="active text-primary">{{link.label}}</a>
+            }
         @if(authHelper.isLoggedIn|async){
         <button class="btn" (click)="logout()">Logout</button>
         }
         @else {
-        @for (link of navLinks; track $index) {
-        <a class="nav-item nav-link" [routerLink]="link.routeLink"
-          routerLinkActive="active text-primary">{{link.label}}</a>
+          <a class="nav-item nav-link" [routerLink]="['/auth/login']"
+              routerLinkActive="active text-primary">Login</a>
+              <a class="nav-item nav-link" [routerLink]="['/auth/register']"
+              routerLinkActive="active text-primary">Register</a>
         }
-        }
+        
       </div>
     </div>
   </div>
