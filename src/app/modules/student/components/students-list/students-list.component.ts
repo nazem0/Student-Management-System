@@ -2,6 +2,8 @@ import { StudentService } from './../../services/student.service';
 import { Component, OnInit } from '@angular/core';
 import { StudentInList } from '../../models/student-in-list';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { CreateStudentComponent } from '../create-student/create-student.component';
 
 @Component({
   selector: 'app-students-list',
@@ -12,7 +14,9 @@ export class StudentsListComponent implements OnInit {
   students: StudentInList[] = []
   constructor(
     private StudentService: StudentService,
-    private snackbar: MatSnackBar
+    private snackbar: MatSnackBar,
+    private modalService : NgbModal
+
   ) { }
   ngOnInit(): void {
     this.getStudentsList();
@@ -30,5 +34,17 @@ export class StudentsListComponent implements OnInit {
           }
         }
       })
+  }
+
+  openCreateStudentModal(){
+    const modalRef = this.modalService.open(CreateStudentComponent);
+		modalRef.componentInstance.name = `createStudent${new Date().getTime()}`;
+    modalRef.result.then((value:boolean)=>{
+      if(value)
+      {
+        this.getStudentsList()
+      }
+    })
+
   }
 }

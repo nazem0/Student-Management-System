@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { CountryISO } from 'ngx-intl-tel-input-gg';
 import { AppHelper } from '../../../../helpers/app-helper';
 import { StudentService } from '../../services/student.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-create-student',
@@ -11,6 +12,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrl: './create-student.component.css'
 })
 export class CreateStudentComponent {
+  @Input() name: string = "modalInstance";
+  // @Output() studentCreationEvent = new EventEmitter()
   studentForm!: FormGroup;
   countryISO = CountryISO;
   appHelper=AppHelper;
@@ -23,9 +26,10 @@ export class CreateStudentComponent {
     number: string;
   };
   constructor(
+    public activeModal : NgbActiveModal,
     private formBuilder: FormBuilder,
     private studentService:StudentService,
-    private snackbar:MatSnackBar
+    private snackbar:MatSnackBar,
     ) {
     this.initForm();
   }
@@ -33,10 +37,10 @@ export class CreateStudentComponent {
     this.studentForm = this.formBuilder.group({
       FirstName: new FormControl<string>('', [Validators.required]),
       LastName: new FormControl<string>('', [Validators.required]),
-      Email: new FormControl<string>('', [Validators.required, Validators.email]),
-      Mobile:new FormControl<string>('',[Validators.required]),
-      NationalID: new FormControl<string>('', [Validators.required]),
-      Age: new FormControl<number | undefined>(undefined, [Validators.required])
+      Email: new FormControl<string>('', [Validators.email]),
+      Mobile:new FormControl<string>('',),
+      NationalID: new FormControl<string>('',),
+      Age: new FormControl<number | undefined>(undefined)
     });
   }
   createStudent(){
@@ -47,7 +51,10 @@ export class CreateStudentComponent {
       this.studentForm.markAllAsTouched();
       this.studentService
       .createStudent(this.studentForm.value)
-      .subscribe();
+      .subscribe({
+        next:()=>this.activeModal.close(true),
+        error:()=>this.activeModal.dismiss()
+      });
     }
   }
 }
