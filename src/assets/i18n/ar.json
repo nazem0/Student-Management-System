@@ -2,6 +2,9 @@
   "Login": "تسجيل الدخول",
   "Password": "كلمة السر",
   "Password_is_required": "كلمة السر مطلوبة",
+  "Authenticated": "تم تسجيل الدخول",
   "Username": "اسم المستخدم",
-  "Username_is_required": "اسم المستخدم مطلوب"
+  "Username_is_required": "اسم المستخدم مطلوب",
+  "No_token_received":"لم يتم إستلام مفتاح الدخول",
+  "Please_check_your_login_data":"من فضلك تأكد من بيانات تسجيل الدخول"
 }

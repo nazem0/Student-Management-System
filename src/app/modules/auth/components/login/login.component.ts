@@ -5,6 +5,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthService } from '../../services/auth.service';
 import { AuthHelper } from '../../../../helpers/auth-helper';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +20,8 @@ export class LoginComponent {
     private snackbar: MatSnackBar,
     private authService: AuthService,
     private authHelper: AuthHelper,
-    private router:Router
+    private router:Router,
+    private translate:TranslateService
   ) {
     this.createForm();
   }
@@ -32,16 +34,16 @@ export class LoginComponent {
   onSubmit() {
     this.loginForm.markAllAsTouched();
     if (this.loginForm.invalid) {
-      this.snackbar.open("Please check your login data", "close")
+      this.snackbar.open(this.translate.instant("Please_check_your_login_data"))
     }
     else {
       this.authService.login(this.loginForm.value).subscribe({
         next: next => {
           if (!next.Data) {
-            this.snackbar.open("No token received", "close")
+            this.snackbar.open(this.translate.instant("No_token_received"))
           }
           else {
-            this.snackbar.open("Authenticated", "✔")
+            this.snackbar.open(this.translate.instant("Authenticated"))
             this.authHelper.storeToken(next.Data)
             this.router.navigate(['/'])
           }
