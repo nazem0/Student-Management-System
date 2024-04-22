@@ -11,9 +11,18 @@
   "Name_is_required":"الإسم مطلوب",
   "Register":"التسجيل",
   "Please_check_your_registration_data":"من فضلك تأكد من بيانات التسجيل",
-  "Students_List":"قائمة الطلاب",
+  "Students_list":"قائمة الطلاب",
   "You_have_to_login_first_to_view_this_page":"قم بتسجيل الدخول اولاً لدخول هذه الصفحة",
   "Logout":"تسجيل الخروج",
   "Error":"خطأ",
-  "Unauthorized":"ليست لديك صلاحية"
+  "Unauthorized":"ليست لديك صلاحية",
+  "Create_student":"إضافة طالب",
+  "Mobile":"رقم الموبايل",
+  "National_ID":"الرقم القومي",
+  "Age":"السن",
+  "ID":"الرقم التعريفي",
+  "Email":"البريد الإلكتروني",
+  "Actions":"إجراءات",
+  "Edit":"تعديل",
+  "Delete":"حذف"
 }

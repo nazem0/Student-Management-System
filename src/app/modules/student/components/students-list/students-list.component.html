@@ -1,7 +1,7 @@
 <div class="my-3">
-    <h2 class="text-center">Students List Table</h2>
+    <h2 class="text-center">{{"Students_list"|translate}}</h2>
     <button class="btn btn-success my-2 w-100" (click)="openCreateStudentModal()">
-      Create Student
+      {{"Create_student"|translate}}
     </button>
 </div>
 <div class="row row-cols-lg-4 row-cols-sm-2">
@@ -10,11 +10,11 @@
         <input type="text"
         class="form-control"
         id="Name"
-        placeholder="Name"
+        [placeholder]="'Name'|translate"
         [(ngModel)]="filters.Name"
         (ngModelChange)="filterStudents()"
         />
-        <label for="Name">Name</label>
+        <label for="Name">{{"Name"|translate}}</label>
       </div>
   </div>
   <div>
@@ -22,11 +22,11 @@
         <input type="text"
         class="form-control"
         id="Mobile"
-        placeholder="Mobile"
+        [placeholder]="'Mobile'|translate"
         [(ngModel)]="filters.Mobile"
         (ngModelChange)="filterStudents()"
         />
-        <label for="Mobile">Mobile</label>
+        <label for="Mobile">{{"Mobile"|translate}}</label>
       </div>
   </div>
 
@@ -53,11 +53,11 @@
         <input type="text"
         class="form-control"
         id="NationalID"
-        placeholder="National ID"
+        [placeholder]="'National_ID'|translate"
         [(ngModel)]="filters.NationalID"
         (ngModelChange)="filterStudents()"
         />
-        <label for="NationalID">National ID</label>
+        <label for="NationalID">{{'National_ID'|translate}}</label>
       </div>
   </div>
 
@@ -66,11 +66,11 @@
         <input type="number"
         class="form-control"
         id="Age"
-        placeholder="Age"
+        [placeholder]="'Age'|translate"
         [(ngModel)]="filters.Age"
         (ngModelChange)="filterStudents()"
         />
-        <label for="Age">Age</label>
+        <label for="Age">{{"Age"|translate}}</label>
       </div>
   </div>
 </div>
@@ -78,13 +78,13 @@
     <table class="table">
         <thead>
           <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Mobile</th>
-            <th>Email</th>
-            <th>NationalID</th>
-            <th>Age</th>
-            <th colspan="2">Actions</th>
+            <th>{{"ID"|translate}}</th>
+            <th>{{"Name"|translate}}</th>
+            <th>{{"Mobile"|translate}}</th>
+            <th>{{"Email"|translate}}</th>
+            <th>{{"National_ID"|translate}}</th>
+            <th>{{"Age"|translate}}</th>
+            <th colspan="2">{{"Actions"|translate}}</th>
           </tr>
         </thead>
         <tbody>
@@ -98,14 +98,14 @@
             <td>
               <button class="btn btn-warning" [routerLink]="'../edit/'+student.ID">
                 <a>
-                  Edit
+                  {{"Edit"|translate}}
                 </a>
               </button>
             </td>
             <td>
               <button class="btn btn-danger" (click)="openDeleteStudentConfirmation(student.ID)">
                 <a>
-                  Delete
+                  {{"Delete"|translate}}
                 </a>
               </button>
             </td>
