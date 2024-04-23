@@ -8,14 +8,31 @@ export class I18nHelper {
     readonly languageKey = "RoboostStudentManagementSystemLanguage";
     public currentLang = ""
     public currentLoadedBootstrap = ""
+    public loadedLangs: Languages[] = []
     constructor(
         private translateService: TranslateService,
     ) {
 
     }
-    storeLanguagePereference(language: Languages) {
+    async storeLanguagePereference(language: Languages) {
         localStorage.setItem(this.languageKey, JSON.stringify(language))
-        this.currentLang = language;
+        this.currentLang = language
+        
+        //dynamicalled loaded based on user language prefrance
+
+        if (!this.loadedLangs.includes(language)) {
+            try {
+                console.warn("loaded language ==>", language);
+                let loadedLang = await import(`../../assets/i18n/${language}.json`)
+                this.translateService.setTranslation(language, loadedLang);
+                this.loadedLangs.push(language)
+            }
+            catch {
+                //switch to default language if encountered miss input
+                let loadedLang = await import(`../../assets/i18n/ar.json`)
+                this.translateService.setTranslation(Languages.Arabic, loadedLang);
+            }
+        }
     }
     getLanguagePereference(): Languages {
         let languageStringified = localStorage.getItem(this.languageKey)
@@ -24,11 +41,11 @@ export class I18nHelper {
         }
         return Languages.Arabic
     }
-    changeLanguage(language: Languages) {
+    async changeLanguage(language: Languages) {
         this.translateService.setDefaultLang(language)
         this.currentLang = language;
         this.translateService.use(language)
-        this.storeLanguagePereference(language);
+        await this.storeLanguagePereference(language);
         this.applyDirection(language);
     }
 
@@ -42,7 +59,7 @@ export class I18nHelper {
         return this.loadStyle(language)
     }
 
-    loadStyle(language: Languages) :boolean {
+    loadStyle(language: Languages): boolean {
         let bootstrapFileName = language === Languages.Arabic ?
             "bootstrap.rtl.min.css" : "bootstrap.min.css"
 
@@ -53,7 +70,7 @@ export class I18nHelper {
         return this.addStyleSheet(cssLocation);
     }
 
-    addStyleSheet(cssLocation:string):boolean{
+    addStyleSheet(cssLocation: string): boolean {
         const head = document.getElementsByTagName('head')[0];
 
         let themeLink = document.getElementById(
@@ -72,17 +89,20 @@ export class I18nHelper {
         return true;
     }
     async InitLocalization(): Promise<boolean> {
-        const ar = await import(`../../assets/i18n/ar.json`);
-        const en = await import(`../../assets/i18n/en.json`);
-        const fr = await import(`../../assets/i18n/fr.json`);
-        const es = await import(`../../assets/i18n/es.json`);
-        this.translateService.setTranslation(Languages.Arabic, ar);
-        this.translateService.setTranslation(Languages.English, en);
-        this.translateService.setTranslation(Languages.French, fr);
-        this.translateService.setTranslation(Languages.Spanish, es);
+        // Replaced to be dynamicalled loaded based on user language prefrance
+        //#region Old Language Loading Mechanism
+        // const ar = await import(`../../assets/i18n/ar.json`);
+        // const en = await import(`../../assets/i18n/en.json`);
+        // const fr = await import(`../../assets/i18n/fr.json`);
+        // const es = await import(`../../assets/i18n/es.json`);
+        // this.translateService.setTranslation(Languages.Arabic, ar);
+        // this.translateService.setTranslation(Languages.English, en);
+        // this.translateService.setTranslation(Languages.French, fr);
+        // this.translateService.setTranslation(Languages.Spanish, es);
+        //#endregion
         let preferredLanguage = this.getLanguagePereference()
         this.translateService.setDefaultLang(preferredLanguage);
-        this.storeLanguagePereference(preferredLanguage);
+        await this.storeLanguagePereference(preferredLanguage);
         return this.applyDirection(preferredLanguage);
     }
 }
