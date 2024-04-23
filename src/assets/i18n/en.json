@@ -51,5 +51,6 @@
   "Home_Page":"Home",
   "Choose_language":"Choose Language",
   "Close":"Close",
-  "Max_length_is_255_characters":"Max length is 255 characters"
+  "Max_length_is_255_characters":"Max length is 255 characters",
+  "Max_length_is_100_characters":"Max length is 100 characters"
 }

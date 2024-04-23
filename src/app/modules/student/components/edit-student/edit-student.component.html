@@ -1,8 +1,7 @@
 <div class="my-3">
-    <h2 class="text-center">{{"Edit_student_info"|translate}}</h2>
+  <h2 class="text-center">{{ "Edit_student_info" | translate }}</h2>
 </div>
 <form *ngIf="studentForm" [formGroup]="studentForm">
-        
   <div class="row row-cols-md-2 gy-1 gx-0">
     <div class="form-floating mb-3">
       <input
@@ -10,12 +9,25 @@
         class="form-control"
         id="FirstName"
         formControlName="FirstName"
-        [placeholder]="'First_name'|translate"
+        [placeholder]="'First_name' | translate"
       />
-      <label for="FirstName">{{'First_name'|translate}}</label>
-      @if(appHelper.checkTouchedOrDirtyAndRequiredError(studentForm.get('FirstName'))){
-      <small class="text-danger">{{"First_name_is_required"|translate}}</small>
-      }
+      <label for="FirstName">{{ "First_name" | translate }}</label>
+      <div
+        *ngIf="
+          appHelper.checkIsControlTouchedOrDirty(studentForm.get('FirstName'))
+        "
+        class="d-flex flex-column"
+      >
+        @if(studentForm.get("FirstName")?.getError('required')){
+        <small class="text-danger">{{
+          "First_name_is_required" | translate
+        }}</small>
+        } @if(studentForm.get("FirstName")?.getError('maxlength')){
+        <small class="text-danger">{{
+          "Max_length_is_255_characters" | translate
+        }}</small>
+        }
+      </div>
     </div>
 
     <div class="form-floating mb-3">
@@ -24,12 +36,25 @@
         class="form-control"
         id="LastName"
         formControlName="LastName"
-        [placeholder]="'Last_name'|translate"
+        [placeholder]="'Last_name' | translate"
       />
-      <label for="LastName">{{'Last_name'|translate}}</label>
-      @if(appHelper.checkTouchedOrDirtyAndRequiredError(studentForm.get('LastName'))){
-      <small class="text-danger">{{'Last_name_is_required'|translate}}</small>
-      }
+      <label for="LastName">{{ "Last_name" | translate }}</label>
+      <div
+        *ngIf="
+          appHelper.checkIsControlTouchedOrDirty(studentForm.get('LastName'))
+        "
+        class="d-flex flex-column"
+      >
+        @if(studentForm.get("LastName")?.getError('required')){
+        <small class="text-danger">{{
+          "Last_name_is_required" | translate
+        }}</small>
+        } @if(studentForm.get("LastName")?.getError('maxlength')){
+        <small class="text-danger">{{
+          "Max_length_is_255_characters" | translate
+        }}</small>
+        }
+      </div>
     </div>
   </div>
   <div class="form-floating mb-3">
@@ -38,13 +63,18 @@
       class="form-control"
       id="NameArabic"
       formControlName="NameArabic"
-      [placeholder]="'Name_in_arabic'|translate"
+      [placeholder]="'Name_in_arabic' | translate"
       dir="rtl"
     />
-    <label for="NameArabic">{{'Name_in_arabic'|translate}}</label>
-    @if(appHelper.checkTouchedOrDirtyAndRequiredError(studentForm.get('NameArabic'))){
-    <small class="text-danger">{{"Name_in_arabic_is_required"|translate}}</small>
-    }
+    <label for="NameArabic">{{ "Name_in_arabic" | translate }}</label>
+    <div *ngIf="appHelper.checkIsControlTouchedOrDirty(studentForm.get('NameArabic'))" class="d-flex flex-column">
+      @if(studentForm.get("NameArabic")?.getError('required')){
+      <small class="text-danger">{{'Name_in_arabic_is_required'|translate}}</small>
+      }
+      @if(studentForm.get("NameArabic")?.getError('maxlength')){
+      <small class="text-danger">{{'Max_length_is_100_characters'|translate}}</small>
+      }
+  </div>
   </div>
 
   <div class="form-floating mb-3">
@@ -53,12 +83,17 @@
       class="form-control"
       id="NameEnglish"
       formControlName="NameEnglish"
-      [placeholder]="'Name_in_english'|translate"
+      [placeholder]="'Name_in_english' | translate"
     />
-    <label for="NameEnglish">{{'Name_in_english'|translate}}</label>
-    @if(appHelper.checkTouchedOrDirtyAndRequiredError(studentForm.get('NameEnglish'))){
-    <small class="text-danger">{{"Name_in_english_is_required"|translate}}</small>
-    }
+    <label for="NameEnglish">{{ "Name_in_english" | translate }}</label>
+    <div *ngIf="appHelper.checkIsControlTouchedOrDirty(studentForm.get('NameEnglish'))" class="d-flex flex-column">
+      @if(studentForm.get("NameEnglish")?.getError('required')){
+      <small class="text-danger">{{'Name_in_english_is_required'|translate}}</small>
+      }
+      @if(studentForm.get("NameEnglish")?.getError('maxlength')){
+      <small class="text-danger">{{'Max_length_is_100_characters'|translate}}</small>
+      }
+  </div>
   </div>
   <div class="mb-3">
     <ngx-intl-tel-input
@@ -81,15 +116,18 @@
       class="form-control"
       id="Email"
       formControlName="Email"
-      [placeholder]="'Email'|translate"
+      [placeholder]="'Email' | translate"
     />
-    <label for="Email">{{'Email'|translate}}</label>
-    <div class="d-flex flex-column">
-     @if(studentForm.get('Email')?.dirty &&
-      studentForm.get('Email')?.invalid){
+    <label for="Email">{{ "Email" | translate }}</label>
+    <div *ngIf="appHelper.checkIsControlTouchedOrDirty(studentForm.get('Email'))" class="d-flex flex-column">
+      @if(studentForm.get('Email')?.invalid){
       <small class="text-danger">{{'Email_is_invalid'|translate}}</small>
       }
-    </div>
+
+      @if(studentForm.get("Email")?.getError('maxlength')){
+      <small class="text-danger">{{'Max_length_is_255_characters'|translate}}</small>
+      }
+  </div>
   </div>
   <div class="form-floating mb-3">
     <input
@@ -97,9 +135,14 @@
       class="form-control"
       id="NationalID"
       formControlName="NationalID"
-      [placeholder]="'National_ID'|translate"
+      [placeholder]="'National_ID' | translate"
     />
-    <label for="NationalID">{{'National_ID'|translate}}</label>
+    <label for="NationalID">{{ "National_ID" | translate }}</label>
+    <div *ngIf="appHelper.checkIsControlTouchedOrDirty(studentForm.get('NationalID'))" class="d-flex flex-column">
+      @if(studentForm.get("NationalID")?.getError('maxlength')){
+      <small class="text-danger">{{'Max_length_is_255_characters'|translate}}</small>
+      }
+  </div>
   </div>
 
   <div class="form-floating mb-3">
@@ -108,12 +151,16 @@
       class="form-control"
       id="Age"
       formControlName="Age"
-      [placeholder]="'Age'|translate"
+      [placeholder]="'Age' | translate"
     />
-    <label for="Age">{{"Age"|translate}}</label>
+    <label for="Age">{{ "Age" | translate }}</label>
   </div>
 
-  <button (click)="editStudent()" type="submit" class="btn btn-primary py-3 w-100">
-    {{"Edit"|translate}}
+  <button
+    (click)="editStudent()"
+    type="submit"
+    class="btn btn-primary py-3 w-100"
+  >
+    {{ "Edit" | translate }}
   </button>
 </form>

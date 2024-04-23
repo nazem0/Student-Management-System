@@ -51,5 +51,6 @@
   "Home_Page": "Page d'accueil",
   "Choose_language":"Choisir la langue",
   "Close": "Fermer",
-  "Max_length_is_255_characters":"La longueur maximale est de 255 caractères"
+  "Max_length_is_255_characters":"La longueur maximale est de 255 caractères",
+  "Max_length_is_100_characters":"La longueur maximale est de 100 caractères"
 }
