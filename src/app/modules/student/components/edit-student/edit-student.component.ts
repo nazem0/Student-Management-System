@@ -75,13 +75,13 @@ export class EditStudentComponent implements OnInit {
     // Api issue because it's Tested on Here / Swagger / PostMan 
     this.studentForm = this.formBuilder.group({
       ID: new FormControl<number>(student.ID, [Validators.required]),
-      NameArabic: new FormControl<string>(student.NameArabic, [Validators.required]),
-      NameEnglish: new FormControl<string>(student.NameEnglish, [Validators.required]),
-      FirstName: new FormControl<string>(student.FirstName, [Validators.required]),
-      LastName: new FormControl<string>(student.LastName, [Validators.required]),
-      Email: new FormControl<string | null>(student.Email,[Validators.email]),
-      Mobile: new FormControl<string | null>(student.Mobile),
-      NationalID: new FormControl<string | null>(student.NationalID),
+      NameArabic: new FormControl<string>(student.NameArabic, [Validators.required, Validators.maxLength(100)]),
+      NameEnglish: new FormControl<string>(student.NameEnglish, [Validators.required, Validators.maxLength(100)]),
+      FirstName: new FormControl<string>(student.FirstName, [Validators.required, Validators.maxLength(255)]),
+      LastName: new FormControl<string>(student.LastName, [Validators.required, Validators.maxLength(255)]),
+      Email: new FormControl<string | null>(student.Email,[Validators.email, Validators.maxLength(255)]),
+      Mobile: new FormControl<string | null>(student.Mobile,[Validators.maxLength(255)]),
+      NationalID: new FormControl<string | null>(student.NationalID,[Validators.maxLength(255)]),
       Age: new FormControl<number>(student.Age)
     });
     this.setMobileNumberValue(student.Mobile);
