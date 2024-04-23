@@ -3,9 +3,9 @@
     <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss()"></button>
 </div>
 <div class="modal-body">
-    <div class="row row-cols-lg-4 row-cols-md-2">
+    <div class="row row-cols-lg-4 row-cols-2 g-3">
         @for (language of languages; track $index) {
-            <img style="cursor: pointer;" [src]="language.img" (click)="changeLanguage(language.key);">
+            <img class="flag-img rounded-5 cursor-pointer" [src]="language.img" (click)="changeLanguage(language.key);">
         }
     </div>
 </div>
