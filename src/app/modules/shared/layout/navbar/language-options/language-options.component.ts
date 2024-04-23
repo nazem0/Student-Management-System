@@ -18,7 +18,8 @@ export class LanguageOptionsComponent {
       { img: '/assets/png/egypt.png', key: Languages.Arabic },
       { img: '/assets/png/us.png', key: Languages.English },
       { img: '/assets/png/france.png', key: Languages.French },
-      { img: '/assets/png/spain.png', key: Languages.Spanish }
+      { img: '/assets/png/spain.png', key: Languages.Spanish },
+      { img: '/assets/png/de.png', key: Languages.Germany }
     ]
   }
   changeLanguage(language:Languages){

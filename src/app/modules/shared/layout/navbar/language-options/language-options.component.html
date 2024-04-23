@@ -3,7 +3,7 @@
     <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.close()"></button>
 </div>
 <div class="modal-body">
-    <div class="row row-cols-lg-4 row-cols-2 g-3">
+    <div class="row row-cols-3 g-3 justify-content-center">
         @for (language of languages; track $index) {
             <img class="flag-img rounded-5 cursor-pointer" [src]="language.img" (click)="changeLanguage(language.key);">
         }

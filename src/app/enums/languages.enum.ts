@@ -2,5 +2,6 @@ export enum Languages {
     Arabic="ar",
     English="en",
     French="fr",
-    Spanish="es"
+    Spanish="es",
+    Germany="de"
 }
