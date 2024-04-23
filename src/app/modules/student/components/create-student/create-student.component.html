@@ -9,17 +9,28 @@
                 <input type="text" class="form-control" id="FirstName" formControlName="FirstName"
                     placeholder="{{'First_name'|translate}}" />
                 <label for="FirstName">{{"First_name"|translate}}</label>
-                @if(appHelper.checkTouchedOrDirtyAndRequiredError(studentForm.get('FirstName'))){
-                <small class="text-danger">{{'First_name_is_required'|translate}}</small>
-                }
+                <div *ngIf="appHelper.checkIsControlTouchedOrDirty(studentForm.get('FirstName'))" class="d-flex flex-column">
+                    @if(studentForm.get("FirstName")?.getError('required')){
+                    <small class="text-danger">{{'First_name_is_required'|translate}}</small>
+                    }
+
+                    @if(studentForm.get("FirstName")?.getError('maxlength')){
+                    <small class="text-danger">{{'Max_length_is_255_characters'|translate}}</small>
+                    }
+                </div>
             </div>
             <div class="form-floating mb-3">
                 <input type="text" class="form-control" id="LastName" formControlName="LastName"
                     placeholder="{{'Last_name'|translate}}" />
                 <label for="LastName">{{"Last_name"|translate}}</label>
-                @if(appHelper.checkTouchedOrDirtyAndRequiredError(studentForm.get('LastName'))){
-                <small class="text-danger">{{'Last_name_is_required'|translate}}</small>
-                }
+                <div *ngIf="appHelper.checkIsControlTouchedOrDirty(studentForm.get('LastName'))" class="d-flex flex-column">
+                    @if(studentForm.get("LastName")?.getError('required')){
+                    <small class="text-danger">{{'Last_name_is_required'|translate}}</small>
+                    }
+                    @if(studentForm.get("LastName")?.getError('maxlength')){
+                    <small class="text-danger">{{'Max_length_is_255_characters'|translate}}</small>
+                    }
+                </div>
             </div>
         </div>
         <div class="mb-3">
@@ -28,20 +39,18 @@
                 [(ngModel)]="Mobile" [ngModelOptions]="{ standalone: true }"
                 (ngModelChange)="studentForm.get('Mobile')?.setValue(Mobile?.e164Number)">
             </ngx-intl-tel-input>
-            <!-- @if(appHelper.checkTouchedOrDirtyAndRequiredError(studentForm.get('Mobile'))){
-            <small class="text-danger">{{'Mobil_is_required'|translate}}</small>
-            } -->
         </div>
         <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="Email" formControlName="Email" placeholder="{{'Email'|translate}}" />
+            <input type="text" class="form-control" id="Email" formControlName="Email"
+                placeholder="{{'Email'|translate}}" />
             <label for="Email">{{"Email"|translate}}</label>
-            <div class="d-flex flex-column">
-                <!-- @if(appHelper.checkTouchedOrDirtyAndRequiredError(studentForm.get('Email'))){
-                <small class="text-danger">{{'Email_is_required'|translate}}</small>
-                } -->
-                 @if(studentForm.get('Email')?.dirty &&
-                studentForm.get('Email')?.invalid){
+            <div *ngIf="appHelper.checkIsControlTouchedOrDirty(studentForm.get('Email'))" class="d-flex flex-column">
+                @if(studentForm.get('Email')?.invalid){
                 <small class="text-danger">{{'Email_is_invalid'|translate}}</small>
+                }
+
+                @if(studentForm.get("Email")?.getError('maxlength')){
+                <small class="text-danger">{{'Max_length_is_255_characters'|translate}}</small>
                 }
             </div>
         </div>
@@ -49,12 +58,16 @@
             <input type="text" class="form-control" id="NationalID" formControlName="NationalID"
                 placeholder="{{'National_ID'|translate}}" />
             <label for="NationalID">{{"National_ID"|translate}}</label>
-            <!-- @if(appHelper.checkTouchedOrDirtyAndRequiredError(studentForm.get('NationalID'))){
-            <small class="text-danger">{{'National_ID_is required'|translate}}</small>
-            } -->
+
+            <div *ngIf="appHelper.checkIsControlTouchedOrDirty(studentForm.get('NationalID'))" class="d-flex flex-column">
+                @if(studentForm.get("NationalID")?.getError('maxlength')){
+                <small class="text-danger">{{'Max_length_is_255_characters'|translate}}</small>
+                }
+            </div>
         </div>
         <div class="form-floating mb-3">
-            <input type="number" class="form-control" id="Age" formControlName="Age" placeholder="{{'Age'|translate}}" />
+            <input type="number" class="form-control" id="Age" formControlName="Age"
+                placeholder="{{'Age'|translate}}" />
             <label for="Age">{{"Age"|translate}}</label>
             @if(appHelper.checkTouchedOrDirtyAndRequiredError(studentForm.get('Age'))){
             <small class="text-danger">{{'Age_is_required'|translate}}</small>

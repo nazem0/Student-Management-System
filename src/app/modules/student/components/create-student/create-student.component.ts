@@ -34,15 +34,17 @@ export class CreateStudentComponent {
   }
   initForm(){
     this.studentForm = this.formBuilder.group({
-      FirstName: new FormControl<string>('', [Validators.required]),
-      LastName: new FormControl<string>('', [Validators.required]),
-      Email: new FormControl<string>('', [Validators.email]),
-      Mobile:new FormControl<string>('',),
-      NationalID: new FormControl<string>('',),
+      FirstName: new FormControl<string>('', [Validators.required, Validators.maxLength(255)]),
+      LastName: new FormControl<string>('', [Validators.required, Validators.maxLength(255)]),
+      Email: new FormControl<string>('', [Validators.email, Validators.maxLength(255)]),
+      Mobile:new FormControl<string>('',[Validators.maxLength(255)]),
+      NationalID: new FormControl<string>('',[Validators.maxLength(255)]),
       Age: new FormControl<number | undefined>(undefined,[Validators.required])
     });
   }
   createStudent(){
+    console.log(this.studentForm);
+    
     this.studentForm.markAllAsTouched();
     if(this.studentForm.valid){
       this.studentService
