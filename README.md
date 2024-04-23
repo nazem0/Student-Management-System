@@ -20,6 +20,7 @@ Student Management System
 
 ## Project Structure
 
+```
 ├───app
 │   ├───enums
 │   ├───guards
@@ -52,6 +53,7 @@ Student Management System
 │   ├───i18n
 │   └───png
 └───environments
+```
 
 ## Technologies Used
 
