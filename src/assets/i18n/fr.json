@@ -49,10 +49,13 @@
   "No": "Non",
   "No_students_data_received": "Aucune donnée d'étudiants reçue",
   "Home_Page": "Page d'accueil",
-  "Choose_language":"Choisir la langue",
+  "Choose_language": "Choisir la langue",
   "Close": "Fermer",
-  "Max_length_is_255_characters":"La longueur maximale est de 255 caractères",
-  "Max_length_is_100_characters":"La longueur maximale est de 100 caractères",
-  "Search_by_country_name":"Rechercher par nom de pays"
-
+  "Max_length_is_255_characters": "La longueur maximale est de 255 caractères",
+  "Max_length_is_100_characters": "La longueur maximale est de 100 caractères",
+  "Search_by_country_name": "Rechercher par nom de pays",
+  "Only_my_students": "Seulement Mes Étudiants",
+  "All_students": "Tous les Étudiants",
+  "Show_only_my_students": "Afficher Seulement Mes Étudiants",
+  "Show_all_students": "Afficher Tous les Étudiants"
 }

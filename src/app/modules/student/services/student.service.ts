@@ -21,6 +21,10 @@ export class StudentService {
     return this.http.get<ApiResponse<StudentInList[]>>(`${environment.api}/${this.endpointParent}/Get`)
   }
 
+  getMyStudentsList(): Observable<ApiResponse<StudentInList[]>> {
+    return this.http.get<ApiResponse<StudentInList[]>>(`${environment.api}/${this.endpointParent}/GetAuthorized`)
+  }
+  
   getStudentById(id: number): Observable<ApiResponse<StudentDetails>> {
     // Had to use GetEditableByID
     // The endpoint in the task should've been /GetById

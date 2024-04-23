@@ -53,5 +53,9 @@
     "Close": "Schließen",
     "Max_length_is_255_characters": "Maximale Länge ist 255 Zeichen",
     "Max_length_is_100_characters": "Maximale Länge ist 100 Zeichen",
-    "Search_by_country_name": "Suche nach Ländernam"
+    "Search_by_country_name": "Suche nach Ländernam",
+    "Only_my_students":"Nur Meine Studenten",
+    "All_students": "Alle Studenten",
+    "Show_only_my_students": "Nur Meine Studenten anzeigen",
+    "Show_all_students": "Alle Studenten anzeigen"
 }

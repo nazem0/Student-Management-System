@@ -14,6 +14,7 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class StudentsListComponent implements OnInit {
   students: StudentInList[] = []
+  showOnlyMyStudent = false;
   studentsCopy: StudentInList[] = []
   filters: {
     Name: string,
@@ -25,8 +26,8 @@ export class StudentsListComponent implements OnInit {
   constructor(
     private StudentService: StudentService,
     private snackbar: MatSnackBar,
-    private modalService : NgbModal,
-    private translate:TranslateService
+    private modalService: NgbModal,
+    private translate: TranslateService
   ) {
     this.filters = {
       Name: "",
@@ -39,8 +40,9 @@ export class StudentsListComponent implements OnInit {
     this.getStudentsList();
   }
   getStudentsList() {
-    this.StudentService
-      .getStudentsList()
+    let api = this.showOnlyMyStudent ? this.StudentService.getMyStudentsList() : this.StudentService.getStudentsList();
+
+    api
       .subscribe({
         next: next => {
           if (!next.Data) {
@@ -55,17 +57,17 @@ export class StudentsListComponent implements OnInit {
             and we only want one of them filtered
             and the other stays the same
             */
-            this.studentsCopy = JSON.parse(JSON.stringify(next.Data))
+            this.studentsCopy = JSON.parse(JSON.stringify(next.Data));
+            this.filterStudents()
           }
         }
       })
   }
-  openDeleteStudentConfirmation(studentId: number){
+  openDeleteStudentConfirmation(studentId: number) {
     const modalRef = this.modalService.open(DeleteStudentConfirmationComponent);
-		modalRef.componentInstance.name = `deleteStudent${new Date().getTime()}`;
-    modalRef.result.then((value:boolean)=>{
-      if(value)
-      {
+    modalRef.componentInstance.name = `deleteStudent${new Date().getTime()}`;
+    modalRef.result.then((value: boolean) => {
+      if (value) {
         this.deleteStudent(studentId)
       }
     })
@@ -79,14 +81,13 @@ export class StudentsListComponent implements OnInit {
           this.getStudentsList()
         }
       })
-    }
+  }
 
-  openCreateStudentModal(){
+  openCreateStudentModal() {
     const modalRef = this.modalService.open(CreateStudentComponent);
-		modalRef.componentInstance.name = `createStudent${new Date().getTime()}`;
-    modalRef.result.then((value:boolean)=>{
-      if(value)
-      {
+    modalRef.componentInstance.name = `createStudent${new Date().getTime()}`;
+    modalRef.result.then((value: boolean) => {
+      if (value) {
         this.getStudentsList()
       }
     })
@@ -113,5 +114,9 @@ export class StudentsListComponent implements OnInit {
     if (typeof this.filters.Age === "number") {
       this.students = this.students.filter(e => e.Age == this.filters.Age)
     }
+  }
+
+  toggleStudents() {
+    this.showOnlyMyStudent = !this.showOnlyMyStudent;
   }
 }

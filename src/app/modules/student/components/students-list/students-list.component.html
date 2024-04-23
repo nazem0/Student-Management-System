@@ -1,9 +1,19 @@
 <div class="my-3">
-    <h2 class="text-center">{{"Students_list"|translate}}</h2>
-    <button class="btn btn-success my-2 w-100" (click)="openCreateStudentModal()">
-      {{"Create_student"|translate}}
-    </button>
+    <h2 class="text-center">{{"Students_list"|translate}} ({{ (showOnlyMyStudent ? "Only_my_students" : "All_students")|translate}})</h2>
+    <div class="row row-cols-sm-2 g-3">
+      <div>
+        <button class="btn btn-success w-100" (click)="openCreateStudentModal()">
+          {{"Create_student"|translate}}
+        </button>
+      </div>
+      <div>
+        <button class="btn btn-primary w-100" (click)="toggleStudents(); getStudentsList()">
+          {{ (showOnlyMyStudent ? "Show_all_students" : "Show_only_my_students")|translate}}
+        </button>
+      </div>
+    </div>
 </div>
+<hr>
 <div class="row row-cols-lg-4 row-cols-sm-2">
   <div>
     <div class="form-floating mb-3">
@@ -73,6 +83,9 @@
         <label for="Age">{{"Age"|translate}}</label>
       </div>
   </div>
+</div>
+<div>
+ 
 </div>
 <div class="overflow-x-auto">
     <table class="table">
