@@ -17,7 +17,7 @@ export class Http implements HttpInterceptor {
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         req = req.clone({
             setHeaders: {
-                token: `Bearer ${this._authHelper.getToken()}`,
+                token: this._authHelper.getToken()??"",
                 lang:  I18nHelper.currentLang ?? Languages.Arabic
                 
             }
