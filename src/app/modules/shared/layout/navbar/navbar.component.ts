@@ -1,3 +1,4 @@
+import { AuthService } from './../../../auth/services/auth.service';
 import { Router } from '@angular/router';
 import { Component } from '@angular/core';
 import { AuthHelper } from '../../../../helpers/auth-helper';
@@ -19,10 +20,12 @@ export class NavbarComponent {
     private router: Router,
     private transalte: TranslateService,
     private i18nHelper: I18nHelper,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private authService:AuthService
   ) { }
 
   logout() {
+    this.authService.logout().subscribe();
     this.authHelper.removeToken();
     this.router.navigate(['/auth/login'])
   }
