@@ -15,15 +15,6 @@ export class AppComponent implements OnInit {
     private i18nHelper: I18nHelper
   ) {}
   async ngOnInit() {
-    await this.initLocalization();
-  }
-  async initLocalization() {
-    const ar = await import(`../assets/i18n/ar.json`);
-    const en = await import(`../assets/i18n/en.json`);
-    this.translateService.setTranslation(Languages.Arabic, ar);
-    this.translateService.setTranslation(Languages.English, en);
-    this.translateService.setDefaultLang(Languages.Arabic);
-    this.translateService.currentLang = Languages.Arabic;
-    this.i18nHelper.applyDirection(Languages.Arabic);
-  }
+    await this.i18nHelper.InitLocalization();
+  }    
 }

@@ -1,9 +1,11 @@
+import { I18nHelper } from './../helpers/i18n-helper';
 import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } from "@angular/common/http";
 import { Observable, catchError, tap, throwError } from "rxjs";
 import { Injectable } from "@angular/core";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { AuthHelper } from "../helpers/auth-helper";
 import { TranslateService } from "@ngx-translate/core";
+import { Languages } from "../enums/languages.enum";
 
 @Injectable()
 export class Http implements HttpInterceptor {
@@ -16,7 +18,7 @@ export class Http implements HttpInterceptor {
         req = req.clone({
             setHeaders: {
                 token: `Bearer ${this._authHelper.getToken()}`,
-                lang:  this._translate.currentLang
+                lang:  I18nHelper.currentLang ?? Languages.Arabic
                 
             }
         })

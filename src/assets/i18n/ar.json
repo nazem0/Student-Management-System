@@ -47,5 +47,8 @@
   "Are_you_sure_you_want_to_remove_this_student":"هل انت متأكد انك تريد حذف هذا الطالب ؟",
   "Yes":"نعم",
   "No":"لا",
-  "No_students_data_received":"لم يتم إستلام بيانات الطلاب"
+  "No_students_data_received":"لم يتم إستلام بيانات الطلاب",
+  "Home_Page":"الصفحة الرئيسية",
+  "Choose_language":"اختر لغة",
+  "Close":"إغلاق"
 }

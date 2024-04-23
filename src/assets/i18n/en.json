@@ -47,5 +47,8 @@
   "Are_you_sure_you_want_to_remove_this_student": "Are you sure you want to remove this student",
   "Yes": "Yes",
   "No": "No",
-  "No_students_data_received": "No students data received"
+  "No_students_data_received": "No students data received",
+  "Home_Page":"Home",
+  "Choose_language":"Choose Language",
+  "Close":"Close"
 }

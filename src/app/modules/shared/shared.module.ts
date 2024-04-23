@@ -7,6 +7,7 @@ import { NavbarComponent } from './layout/navbar/navbar.component';
 import { HttpClientModule } from '@angular/common/http';
 import { TranslateModule } from '@ngx-translate/core';
 import { TranslateNumberPipe } from './pipes/translate-number.pipe';
+import { LanguageOptionsComponent } from './layout/navbar/language-options/language-options.component';
 
 
 
@@ -14,7 +15,8 @@ import { TranslateNumberPipe } from './pipes/translate-number.pipe';
   declarations: [
     NavbarComponent,
     LayoutComponent,
-    TranslateNumberPipe
+    TranslateNumberPipe,
+    LanguageOptionsComponent
   ],
   imports: [
     CommonModule,
