@@ -1,4 +1,4 @@
-import { I18nHelper } from './../helpers/i18n-helper';
+import { I18nHelper } from '../helpers/i18n-helper';
 import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } from "@angular/common/http";
 import { Observable, catchError, tap, throwError } from "rxjs";
 import { Injectable } from "@angular/core";

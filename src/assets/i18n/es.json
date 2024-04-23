@@ -52,6 +52,7 @@
   "Choose_language": "Elegir Idioma",
   "Close": "Cerrar",
   "Max_length_is_255_characters":"La longitud máxima es de 255 caracteres",
-  "Max_length_is_100_characters":"La longitud máxima es de 100 caracteres"
+  "Max_length_is_100_characters":"La longitud máxima es de 100 caracteres",
+  "Search_by_country_name":"Buscar por nombre de país"
 
 }

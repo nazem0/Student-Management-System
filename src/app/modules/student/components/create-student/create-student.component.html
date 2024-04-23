@@ -1,6 +1,6 @@
 <div class="modal-header">
     <h2 class="modal-title">{{"Create_student"|translate}}</h2>
-    <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
+    <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.close()"></button>
 </div>
 <div class="modal-body">
     <form [formGroup]="studentForm">
@@ -34,7 +34,9 @@
             </div>
         </div>
         <div class="mb-3">
-            <ngx-intl-tel-input cssClass="form-control py-3" [selectedCountryISO]="countryISO.Egypt"
+            <ngx-intl-tel-input cssClass="form-control py-3"
+            [searchCountryPlaceholder]="'Search_by_country_name'|translate"
+            [selectedCountryISO]="countryISO.Egypt"
                 [enablePlaceholder]="true" [searchCountryFlag]="true" [maxLength]="15" [phoneValidation]="true"
                 [(ngModel)]="Mobile" [ngModelOptions]="{ standalone: true }"
                 (ngModelChange)="studentForm.get('Mobile')?.setValue(Mobile?.e164Number)">

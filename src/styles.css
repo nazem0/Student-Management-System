@@ -36,3 +36,15 @@ input {
 .cursor-pointer{
     cursor: pointer;
 }
+
+input{
+    direction: inherit !important;
+}
+
+.dropdown-toggle{
+    direction: ltr;
+}
+
+.iti__country-list{
+    text-align:start;
+}

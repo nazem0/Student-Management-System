@@ -1,6 +1,6 @@
 <div class="modal-header">
     <h2 class="modal-title">{{"Confirm_student_delete"|translate}}</h2>
-    <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss()"></button>
+    <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.close()"></button>
 </div>
 <div class="modal-body">
     <div>
@@ -12,7 +12,7 @@
         <button (click)="activeModal.close(true)" class="btn btn-primary">
             {{"Yes"|translate}}
         </button>
-        <button (click)="activeModal.dismiss()" class="btn btn-secondary">
+        <button (click)="activeModal.close()" class="btn btn-secondary">
             {{"No"|translate}}
         </button>
     </div>

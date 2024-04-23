@@ -1,4 +1,4 @@
-import { ApiResponse } from './../../../models/api-response';
+import { ApiResponse } from '../../../models/api-response';
 import { Observable } from 'rxjs';
 import { environment } from './../../../../environments/environment';
 import { Injectable } from '@angular/core';

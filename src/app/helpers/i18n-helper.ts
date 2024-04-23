@@ -1,4 +1,4 @@
-import { Languages } from './../enums/languages.enum';
+import { Languages } from '../enums/languages.enum';
 import { TranslateService } from "@ngx-translate/core";
 import { Injectable } from "@angular/core";
 @Injectable({
@@ -10,7 +10,7 @@ export class I18nHelper {
     public currentLoadedBootstrap = ""
     constructor(
         private translateService: TranslateService,
-        ) {
+    ) {
 
     }
     storeLanguagePereference(language: Languages) {
@@ -32,35 +32,41 @@ export class I18nHelper {
         this.applyDirection(language);
     }
 
-    applyDirection(language: Languages) : boolean {
-        if (language === Languages.Arabic)
+    applyDirection(language: Languages): boolean {
+        if (language === Languages.Arabic) {
             document.dir = "rtl"
+        }
         else {
             document.dir = "ltr"
         }
         return this.loadStyle(language)
     }
 
-    loadStyle(language: Languages) {
+    loadStyle(language: Languages) :boolean {
         let bootstrapFileName = language === Languages.Arabic ?
-        "bootstrap.rtl.min.css" : "bootstrap.min.css"
-        
-        if(bootstrapFileName == this.currentLoadedBootstrap) return true;
+            "bootstrap.rtl.min.css" : "bootstrap.min.css"
+
+        if (bootstrapFileName == this.currentLoadedBootstrap) return true;
 
         this.currentLoadedBootstrap = bootstrapFileName;
+        let cssLocation = `assets/bootstrap/${bootstrapFileName}`
+        return this.addStyleSheet(cssLocation);
+    }
+
+    addStyleSheet(cssLocation:string):boolean{
         const head = document.getElementsByTagName('head')[0];
 
         let themeLink = document.getElementById(
             'client-theme'
         ) as HTMLLinkElement;
         if (themeLink) {
-            themeLink.href = `assets/bootstrap/${bootstrapFileName}`;
+            themeLink.href = cssLocation;
         } else {
             const style = document.createElement('link');
             style.id = 'client-theme';
             style.rel = 'stylesheet';
             style.type = 'text/css';
-            style.href = `assets/bootstrap/${bootstrapFileName}`;
+            style.href = cssLocation;
             head.appendChild(style);
         }
         return true;

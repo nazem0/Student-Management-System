@@ -52,5 +52,6 @@
   "Choose_language":"اختر لغة",
   "Close":"إغلاق",
   "Max_length_is_255_characters":"الحد الأقصى 255 حرف",
-  "Max_length_is_100_characters":"الحد الأقصى 100 حرف"
+  "Max_length_is_100_characters":"الحد الأقصى 100 حرف",
+  "Search_by_country_name":"أبحث بأسم الدولة"
 }
