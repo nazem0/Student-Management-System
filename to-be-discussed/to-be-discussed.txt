@@ -1,0 +1,9 @@
+Points to discuss
+	Loading language modules dynamically
+	based on user preference
+
+	User/POST & Login
+		if it has error it still shows 200
+	
+	I could've implemented standalone components & other ui libraries such as angular material or PrimeNG
+	but the task asked more about bootstrap
