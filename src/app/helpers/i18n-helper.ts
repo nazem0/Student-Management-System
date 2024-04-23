@@ -6,7 +6,8 @@ import { Injectable } from "@angular/core";
 })
 export class I18nHelper {
     readonly languageKey = "RoboostStudentManagementSystemLanguage";
-    public static currentLang = ""
+    public currentLang = ""
+    public currentLoadedBootstrap = ""
     constructor(
         private translateService: TranslateService,
         ) {
@@ -14,7 +15,7 @@ export class I18nHelper {
     }
     storeLanguagePereference(language: Languages) {
         localStorage.setItem(this.languageKey, JSON.stringify(language))
-        I18nHelper.currentLang = language;
+        this.currentLang = language;
     }
     getLanguagePereference(): Languages {
         let languageStringified = localStorage.getItem(this.languageKey)
@@ -25,26 +26,28 @@ export class I18nHelper {
     }
     changeLanguage(language: Languages) {
         this.translateService.setDefaultLang(language)
-        I18nHelper.currentLang = language;
+        this.currentLang = language;
         this.translateService.use(language)
         this.storeLanguagePereference(language);
         this.applyDirection(language);
     }
 
-    applyDirection(language: Languages) {
+    applyDirection(language: Languages) : boolean {
         if (language === Languages.Arabic)
             document.dir = "rtl"
         else {
             document.dir = "ltr"
         }
-        this.loadStyle(language)
+        return this.loadStyle(language)
     }
 
     loadStyle(language: Languages) {
         let bootstrapFileName = language === Languages.Arabic ?
         "bootstrap.rtl.min.css" : "bootstrap.min.css"
-        console.log(bootstrapFileName);
+        
+        if(bootstrapFileName == this.currentLoadedBootstrap) return true;
 
+        this.currentLoadedBootstrap = bootstrapFileName;
         const head = document.getElementsByTagName('head')[0];
 
         let themeLink = document.getElementById(
@@ -60,8 +63,9 @@ export class I18nHelper {
             style.href = `assets/bootstrap/${bootstrapFileName}`;
             head.appendChild(style);
         }
+        return true;
     }
-    async InitLocalization() {
+    async InitLocalization(): Promise<boolean> {
         const ar = await import(`../../assets/i18n/ar.json`);
         const en = await import(`../../assets/i18n/en.json`);
         const fr = await import(`../../assets/i18n/fr.json`);
@@ -73,6 +77,6 @@ export class I18nHelper {
         let preferredLanguage = this.getLanguagePereference()
         this.translateService.setDefaultLang(preferredLanguage);
         this.storeLanguagePereference(preferredLanguage);
-        this.applyDirection(preferredLanguage);
+        return this.applyDirection(preferredLanguage);
     }
 }

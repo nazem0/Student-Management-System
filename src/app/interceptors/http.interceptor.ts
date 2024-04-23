@@ -12,13 +12,14 @@ export class Http implements HttpInterceptor {
     constructor(
         private _snackbar: MatSnackBar,
         private _authHelper: AuthHelper,
-        private _translate:TranslateService
+        private _translate:TranslateService,
+        private i18nHelper:I18nHelper
     ) { }
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         req = req.clone({
             setHeaders: {
                 token: this._authHelper.getToken()??"",
-                lang:  I18nHelper.currentLang ?? Languages.Arabic
+                lang:  this.i18nHelper.currentLang ?? Languages.Arabic
                 
             }
         })

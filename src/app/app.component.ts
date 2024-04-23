@@ -10,11 +10,16 @@ import { I18nHelper } from './helpers/i18n-helper';
 })
 export class AppComponent implements OnInit {
   title = 'Student Management System';
+  styleLoaded?: boolean;
   constructor(
     protected translateService: TranslateService,
     private i18nHelper: I18nHelper
-  ) {}
+  ) { }
   async ngOnInit() {
-    await this.i18nHelper.InitLocalization();
-  }    
+    //avoiding random exception happens if localizations json files are not loaded correctly
+    await this.i18nHelper
+    .InitLocalization()
+    .then((v) => this.styleLoaded = v)
+    .catch(()=>location.reload())
+  }
 }

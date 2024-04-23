@@ -34,7 +34,7 @@ export class NavbarComponent {
     console.log("toggle");
     console.log("OldLang", this.transalte.currentLang);
 
-    if (I18nHelper.currentLang === Languages.Arabic) {
+    if (this.i18nHelper.currentLang === Languages.Arabic) {
       this.i18nHelper.changeLanguage(Languages.English)
     }
     else {
