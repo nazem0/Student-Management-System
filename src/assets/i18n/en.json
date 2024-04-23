@@ -50,5 +50,6 @@
   "No_students_data_received": "No students data received",
   "Home_Page":"Home",
   "Choose_language":"Choose Language",
-  "Close":"Close"
+  "Close":"Close",
+  "Max_length_is_255_characters":"Max length is 255 characters"
 }

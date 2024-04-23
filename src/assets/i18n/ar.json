@@ -50,5 +50,6 @@
   "No_students_data_received":"لم يتم إستلام بيانات الطلاب",
   "Home_Page":"الصفحة الرئيسية",
   "Choose_language":"اختر لغة",
-  "Close":"إغلاق"
+  "Close":"إغلاق",
+  "Max_length_is_255_characters":"الحد الأقصى 255 حرفًا"
 }

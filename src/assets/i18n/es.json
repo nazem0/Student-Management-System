@@ -50,5 +50,6 @@
   "No_students_data_received": "No se recibieron datos de estudiantes",
   "Home_Page": "Inicio",
   "Choose_language": "Elegir Idioma",
-  "Close": "Cerrar"
+  "Close": "Cerrar",
+  "Max_length_is_255_characters":"La longitud máxima es de 255 caracteres"
 }
