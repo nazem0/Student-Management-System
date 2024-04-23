@@ -1,27 +1,73 @@
-# StudentManagementSystem
+# Project Name
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.5.
+Student Management System
 
-## Development server
+## Prerequisites
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- Node.js v18.13 or newer
+- Angular CLI 17.0.5 or newer
 
-## Code scaffolding
+## Installation
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+1. Clone the repository: `git clone https://github.com/nazem0/Student-Management-System.git`
+2. Navigate to the project directory: `cd Student-Management-System`
+3. Install the dependencies: `npm install`
 
-## Build
+## Running the Application
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+1. Start the development server: `ng serve`
+2. Open your browser and navigate to `http://localhost:4200/`
 
-## Running unit tests
+## Project Structure
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+├───app
+│   ├───enums
+│   ├───guards
+│   ├───helpers
+│   ├───interceptors
+│   ├───models
+│   └───modules
+│       ├───auth
+│       │   ├───components
+│       │   │   ├───login
+│       │   │   └───register
+│       │   ├───models
+│       │   └───services
+│       ├───shared
+│       │   ├───layout
+│       │   │   └───navbar
+│       │   │       └───language-options
+│       │   └───pipes
+│       └───student
+│           ├───components
+│           │   ├───create-student
+│           │   ├───edit-student
+│           │   └───students-list
+│           │       └───delete-student-confirmation
+│           ├───models
+│           └───services
+├───assets
+│   ├───bootstrap
+│   ├───fonts
+│   ├───i18n
+│   └───png
+└───environments
 
-## Running end-to-end tests
+## Technologies Used
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+- Angular
+- Bootstrap
+- Ng-bootstrap
+- Ngx-translate
+- Intl-tel-input
 
-## Further help
+## Localization
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- Arabic
+- English
+- French
+- Spanish
+- Germany
+
+> **Note:** Localizations other than Arabic and English are generated using AI (Claude-3-Sonnet)
+
