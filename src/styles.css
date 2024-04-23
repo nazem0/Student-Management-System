@@ -1,13 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
+@import url("../node_modules/intl-tel-input/build/css/intlTelInput.min.css");
+@import url("@angular/material/prebuilt-themes/deeppurple-amber.css");
 
 html,
 body {
     height: 100%;
 }
 
+@font-face {
+    font-family: "Cairo";
+    src: url('./assets/fonts/cairo.ttf');
+}
+
 body {
     margin: 0;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-family: "Cairo", Roboto, "Helvetica Neue", sans-serif !important;
 }
 
 
@@ -15,4 +22,13 @@ ngx-intl-tel-input {
     .iti {
         width: 100% !important;
     }
+}
+
+mat-snack-bar-container {
+    text-align: center;
+}
+
+a,
+input {
+    cursor: pointer;
 }

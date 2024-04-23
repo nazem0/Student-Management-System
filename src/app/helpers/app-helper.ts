@@ -1,5 +1,7 @@
 import { AbstractControl, FormGroup } from '@angular/forms';
 export class AppHelper {
+
+    public static onlyDigitsPattern =  /^\d+$/;
     public static checkIsFormTouchedOrDirty(form:FormGroup):boolean{
         return form.touched || form.dirty
     }

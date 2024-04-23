@@ -5,6 +5,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LayoutComponent } from './layout/layout.component';
 import { NavbarComponent } from './layout/navbar/navbar.component';
 import { HttpClientModule } from '@angular/common/http';
+import { TranslateModule } from '@ngx-translate/core';
+import { TranslateNumberPipe } from './pipes/translate-number.pipe';
+import { LanguageOptionsComponent } from './layout/navbar/language-options/language-options.component';
 
 
 
@@ -12,15 +15,21 @@ import { HttpClientModule } from '@angular/common/http';
   declarations: [
     NavbarComponent,
     LayoutComponent,
-  ],
-  exports: [
-    HttpClientModule
+    TranslateNumberPipe,
+    LanguageOptionsComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
     NgbModule,
-    HttpClientModule
-  ]
+    HttpClientModule,
+    TranslateModule,
+  ],
+  exports: [
+    NgbModule,
+    HttpClientModule,
+    TranslateModule,
+    TranslateNumberPipe
+  ],
 })
 export class SharedModule { }

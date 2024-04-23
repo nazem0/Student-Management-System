@@ -1,18 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { Languages } from './enums/languages.enum';
+import { I18nHelper } from './helpers/i18n-helper';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'Student Management System';
-  constructor(translate: TranslateService) {
-    // this language will be used as a fallback when a translation isn't found in the current language
-    translate.setDefaultLang('en');
-
-     // the lang to use, if the lang isn't available, it will use the current loader to get them
-    translate.use('en');
-}
+  constructor(
+    protected translateService: TranslateService,
+    private i18nHelper: I18nHelper
+  ) {}
+  async ngOnInit() {
+    await this.i18nHelper.InitLocalization();
+  }    
 }

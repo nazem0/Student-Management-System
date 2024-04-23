@@ -1,0 +1,14 @@
+<div class="modal-header">
+    <h4 class="modal-title">{{"Choose_language"|translate}}</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss()"></button>
+</div>
+<div class="modal-body">
+    <div class="row row-cols-lg-4 row-cols-md-2">
+        @for (language of languages; track $index) {
+            <img style="cursor: pointer;" [src]="language.img" (click)="changeLanguage(language.key);">
+        }
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="activeModal.close()">{{"Close"|translate}}</button>
+</div>
