@@ -60,7 +60,9 @@ export class StudentsListComponent implements OnInit {
             this.studentsCopy = JSON.parse(JSON.stringify(next.Data));
             this.filterStudents()
           }
-        }
+        },
+        //Making sure that there is no conflict if user pressed fast enough to conflict data
+        complete:()=>this.showOnlyMyStudent = this.showOnlyMyStudent
       })
   }
   openDeleteStudentConfirmation(studentId: number) {
