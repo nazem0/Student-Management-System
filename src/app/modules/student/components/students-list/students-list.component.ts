@@ -14,7 +14,7 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class StudentsListComponent implements OnInit {
   students: StudentInList[] = []
-  showOnlyMyStudent = false;
+  showOnlyMyStudent = true;
   studentsCopy: StudentInList[] = []
   filters: {
     Name: string,
@@ -95,10 +95,10 @@ export class StudentsListComponent implements OnInit {
   filterStudents() {
     this.students = this.studentsCopy
     this.students =
-      this.students.filter(e => e.Name.includes(this.filters.Name))
+      this.students.filter(e => e.Name?.includes(this.filters.Name))
 
     this.students =
-      this.students.filter(e => e.Mobile.includes(this.filters.Mobile))
+      this.students.filter(e => e.Mobile?.includes(this.filters.Mobile))
     /* 
     Commented because not mentioned in the task,
      but I can implement it anyway 
@@ -109,7 +109,7 @@ export class StudentsListComponent implements OnInit {
 
     this.students =
       this.students
-        .filter(e => e.NationalID.includes(this.filters.NationalID))
+        .filter(e => e.NationalID?.includes(this.filters.NationalID))
 
     if (typeof this.filters.Age === "number") {
       this.students = this.students.filter(e => e.Age == this.filters.Age)
