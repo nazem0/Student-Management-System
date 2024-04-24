@@ -1,11 +1,12 @@
 import { StudentService } from './../../services/student.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit } from '@angular/core';
 import { StudentInList } from '../../models/student-in-list';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { DeleteStudentConfirmationComponent } from './delete-student-confirmation/delete-student-confirmation.component';
 import { CreateStudentComponent } from '../create-student/create-student.component';
 import { TranslateService } from '@ngx-translate/core';
+import { debounceTime } from 'rxjs';
 
 @Component({
   selector: 'app-students-list',
@@ -14,7 +15,8 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class StudentsListComponent implements OnInit {
   students: StudentInList[] = []
-  showOnlyMyStudent = true;
+  showOnlyMyStudents = true;
+  showOnlyMyStudentsChange = new EventEmitter<boolean>()
   studentsCopy: StudentInList[] = []
   filters: {
     Name: string,
@@ -38,9 +40,13 @@ export class StudentsListComponent implements OnInit {
   }
   ngOnInit(): void {
     this.getStudentsList();
+    this.showOnlyMyStudentsChange
+    .pipe(debounceTime(400))
+    .subscribe((showOnlyMyStudentsValue: boolean) => this.getStudentsList(showOnlyMyStudentsValue))
+
   }
-  getStudentsList() {
-    let api = this.showOnlyMyStudent ? this.StudentService.getMyStudentsList() : this.StudentService.getStudentsList();
+  getStudentsList(showOnlyMyStudents?: boolean) {
+    let api = showOnlyMyStudents ? this.StudentService.getMyStudentsList() : this.StudentService.getStudentsList();
 
     api
       .subscribe({
@@ -60,9 +66,7 @@ export class StudentsListComponent implements OnInit {
             this.studentsCopy = JSON.parse(JSON.stringify(next.Data));
             this.filterStudents()
           }
-        },
-        //Making sure that there is no conflict if user pressed fast enough to conflict data
-        complete:()=>this.showOnlyMyStudent = this.showOnlyMyStudent
+        }
       })
   }
   openDeleteStudentConfirmation(studentId: number) {
@@ -119,6 +123,7 @@ export class StudentsListComponent implements OnInit {
   }
 
   toggleStudents() {
-    this.showOnlyMyStudent = !this.showOnlyMyStudent;
+    this.showOnlyMyStudents = !this.showOnlyMyStudents;
+    this.showOnlyMyStudentsChange.emit(this.showOnlyMyStudents)
   }
 }

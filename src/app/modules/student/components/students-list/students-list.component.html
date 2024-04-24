@@ -1,5 +1,5 @@
 <div class="my-3">
-    <h2 class="text-center">{{"Students_list"|translate}} ({{ (showOnlyMyStudent ? "Only_my_students" : "All_students")|translate}})</h2>
+    <h2 class="text-center">{{"Students_list"|translate}} ({{ (showOnlyMyStudents ? "Only_my_students" : "All_students")|translate}})</h2>
     <div class="row row-cols-sm-2 g-3">
       <div>
         <button class="btn btn-success w-100" (click)="openCreateStudentModal()">
@@ -7,8 +7,8 @@
         </button>
       </div>
       <div>
-        <button class="btn btn-primary w-100" (click)="toggleStudents(); getStudentsList()">
-          {{ (showOnlyMyStudent ? "Show_all_students" : "Show_only_my_students")|translate}}
+        <button class="btn btn-primary w-100" (click)="toggleStudents()">
+          {{ (showOnlyMyStudents ? "Show_all_students" : "Show_only_my_students")|translate}}
         </button>
       </div>
     </div>
