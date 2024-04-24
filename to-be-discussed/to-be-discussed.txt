@@ -1,9 +1,13 @@
 Points to discuss
-	Loading language modules dynamically
-	based on user preference
-
 	User/POST & Login
-		if it has error it still shows 200
-	
+		if it has error it still shows 200.
+
+	NameArabic, NameEnglish ( Always null and unchangable )
+
+	Loading language modules dynamically
+	based on user preference.
+
 	I could've implemented standalone components & other ui libraries such as angular material or PrimeNG
-	but the task asked more about bootstrap
+	but the task asked more about bootstrap.
+
+	Latest changes in after-submission branch for more enhanced code.
